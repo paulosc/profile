@@ -81,6 +81,7 @@ def nav(page):
     <div class="links">
       <a href="/#work" data-i18n="nav.work">%s</a>
       <a href="/#history" data-i18n="nav.experience">%s</a>
+      <a href="/#ai" data-i18n="nav.ai">%s</a>
       <a href="/#about" data-i18n="nav.about">%s</a>
       <a href="/services" data-i18n="%s">%s</a>
       %s
@@ -88,7 +89,7 @@ def nav(page):
     </div>
   </div>
 </nav>
-""" % (raw("nav.work"), raw("nav.experience"), raw("nav.about"),
+""" % (raw("nav.work"), raw("nav.experience"), raw("nav.ai"), raw("nav.about"),
        svc_key, raw(svc_key), picker, raw("nav.quote"))
 
 
@@ -133,21 +134,25 @@ def build_index():
 """ % (raw("home.status"), raw("home.h1"), raw("home.lede1"), raw("home.lede2"),
        raw("home.cta1"), raw("home.cta2"), creds)
 
-    def workcard(slug, tags):
+    def workcard(slug, tags, url=None):
         paras = "".join(
             '\n          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.%s.p%d">%s</p>' % (slug, i, raw("work.%s.p%d" % (slug, i)))
             for i in (1, 2) if ("work.%s.p%d" % (slug, i)) in S)
         tagspan = "".join('<span class="tag">%s</span>' % x for x in tags)
+        link = ""
+        if url:
+            link = ('\n          <a class="visit" href="%s" target="_blank" rel="noopener" '
+                    'data-i18n="work.visit">%s</a>' % (url, raw("work.visit")))
         return u"""      <article class="work">
         <div class="work-h">
           %s
           %s
         </div>
-        <div class="work-b">%s
+        <div class="work-b">%s%s
           <div class="tags">%s</div>
         </div>
       </article>
-""" % (t("work.%s.h" % slug, "h3"), t("work.%s.meta" % slug, "span", "lbl"), paras, tagspan)
+""" % (t("work.%s.h" % slug, "h3"), t("work.%s.meta" % slug, "span", "lbl"), paras, link, tagspan)
 
     work = u"""<section id="work">
   <div class="wrap">
@@ -159,12 +164,22 @@ def build_index():
 %s
 %s
 %s
+%s
+%s
+%s
     </div>
 """ % (t("work.label", "span", "lbl"), t("work.h2", "h2"),
        workcard("itau", ["Java", "Spring Boot", "Kafka", "AWS SQS", "Lambda", "Docker", "CI/CD"]),
        workcard("policy", ["Java 11", "Spring Boot", "Kotlin", "Elasticsearch", "MongoDB", "Kafka", "Vue", "Angular", "Jenkins"]),
        workcard("icc", ["Java", "JSF", "PrimeFaces", "C", "FreeRTOS", "Embedded Linux", "Angular", "NodeJS"]),
-       workcard("pedifood", ["Java", "Spring Boot", "Angular", "AWS"]))
+       workcard("arena", ["Recurring billing", "PIX", "Payment gateway", "Android", "Firebase", "Multi-tenant"],
+                "https://arenatatame.com.br/"),
+       workcard("sopede", ["Realtime orders", "Kitchen display", "Firebase", "Multi-tenant", "Web + mobile"],
+                "https://pedfood-585f8.web.app/para-restaurantes"),
+       workcard("cidade", ["Android", "Geolocation", "Image privacy", "Moderation", "Firebase"],
+                "https://play.google.com/store/apps/details?id=br.gov.cidadecidada.cidade_cidada"),
+       workcard("rafael", ["LLM", "Prompt design", "In-app purchases", "Android"],
+                "https://play.google.com/store/apps/details?id=com.forma3dstudio.rafaelia"))
 
     def hist(year, slug):
         return u"""        <div class="pstep"><span class="n" style="width:auto">%s</span><div class="c">%s%s</div></div>
@@ -199,9 +214,51 @@ def build_index():
 </section>
 """ % (t("edu.label", "span", "lbl"), t("edu.post.h", "h3"), t("edu.bach.h", "h3"))
 
+    def small(slug, url):
+        return u"""        <div class="card">
+          %s
+          <p style="font-size:.92rem;color:var(--ink-2)" data-i18n-html="also.%s.p">%s</p>
+          <a class="visit" href="%s" target="_blank" rel="noopener" data-i18n="work.visit">%s</a>
+        </div>
+""" % (t("also.%s.h" % slug, "h3"), slug, raw("also.%s.p" % slug), url, raw("work.visit"))
+
+    also_sec = u"""<section id="also">
+  <div class="wrap">
+    <div class="sec-lbl">%s</div>
+    %s
+    <p class="lede" style="margin-top:14px;margin-bottom:28px" data-i18n-html="also.flowlyx">%s</p>
+    <div class="grid g2">
+%s%s    </div>
+  </div>
+</section>
+""" % (t("also.label", "span", "lbl"), t("also.h2", "h2"), raw("also.flowlyx"),
+       small("gato", "https://play.google.com/store/apps/details?id=com.forma3dstudio.catxroof"),
+       small("kuak", "https://kuak.com/"))
+
+    def aicard(slug):
+        return u"""      <div class="card">
+        %s
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.%s.p">%s</p>
+      </div>
+""" % (t("aisec.%s.h" % slug, "h3"), slug, raw("aisec.%s.p" % slug))
+
+    ai_sec = u"""<section id="ai">
+  <div class="wrap">
+    <div class="sec-lbl">%s</div>
+    %s
+    <p class="lede" style="margin-top:14px;margin-bottom:32px" data-i18n-html="aisec.intro">%s</p>
+    <div class="grid g2">
+%s%s%s%s%s%s    </div>
+  </div>
+</section>
+""" % (t("aisec.label", "span", "lbl"), t("aisec.h2", "h2"), raw("aisec.intro"),
+       aicard("ship"), aicard("trust"), aicard("measure"),
+       aicard("vision"), aicard("claude"), aicard("providers"))
+
     core = ["Java", "Spring Boot", "Kafka", "AWS SQS", "Microservices", "REST", "Docker", "AWS",
             "PostgreSQL", "MongoDB", "Elasticsearch", "Python", "Kotlin", "Angular", "Vue",
-            "TDD / BDD", "CI/CD", "Jenkins"]
+            "TDD / BDD", "CI/CD", "Jenkins",
+            "Claude", "Gemini", "OpenAI", "LLM integration", "Evals", "Structured output"]
     also = ["C", "C++", "FreeRTOS", "Embedded Linux", "JSF", "PrimeFaces", "Grails", "Groovy",
             "Flutter", "Firebase", "Gemini"]
 
@@ -251,7 +308,7 @@ def build_index():
 """ % (t("hire.label", "span", "lbl"), t("hire.h2", "h2"), raw("hire.p"), raw("hire.cta"))
 
     return (head("meta.home.title", "meta.home.desc", "/") + nav("index") + hero + work
-            + timeline + education + about + band + footer() + script_tail(False))
+            + timeline + education + ai_sec + also_sec + about + band + footer() + script_tail(False))
 
 
 # -------------------------------------------------------------- services

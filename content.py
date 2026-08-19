@@ -82,12 +82,124 @@ add("work.icc.p2",
     u"Os mesmos anos cobriram trabalho embarcado: C sobre FreeRTOS e Linux embarcado. Isso ensina um hábito que nunca vai embora &mdash; não existe reiniciar o processo num dispositivo já instalado em campo, então você acerta o uso de recursos e os caminhos de falha de primeira. É por isso que escrevo o ramo de erro antes do caminho feliz.",
     u"Esos mismos años incluyeron trabajo embebido: C sobre FreeRTOS y Linux embebido. Eso enseña un hábito que no se olvida &mdash; no existe reiniciar el proceso en un dispositivo ya instalado en campo, así que aciertas el manejo de recursos y las rutas de fallo a la primera. Por eso escribo la rama de error antes del camino feliz.")
 
-add("work.pedifood.h", u"PediFood", u"PediFood", u"PediFood")
-add("work.pedifood.meta", u"Own product", u"Produto próprio", u"Producto propio")
-add("work.pedifood.p1",
-    u"A delivery platform built for small towns rather than capitals &mdash; the places the big apps ignore because the order volume does not justify their commission. Java and Spring Boot on the backend, Angular on the front, running on AWS.",
-    u"Uma plataforma de delivery feita para cidades pequenas, e não para capitais &mdash; os lugares que os aplicativos grandes ignoram porque o volume de pedidos não justifica a comissão deles. Java e Spring Boot no backend, Angular no front, rodando na AWS.",
-    u"Una plataforma de delivery hecha para pueblos pequeños, no para capitales &mdash; los lugares que las apps grandes ignoran porque el volumen de pedidos no justifica su comisión. Java y Spring Boot en el backend, Angular en el front, corriendo en AWS.")
+add("work.sopede.h", u"SôPede", u"SôPede", u"SôPede")
+add("work.sopede.meta", u"Own product &middot; in production", u"Produto próprio &middot; em produção", u"Producto propio &middot; en producción")
+add("work.sopede.p1",
+    u"An ordering platform for restaurants: a digital menu customers order from, and a kitchen-side order manager that runs on a screen in the kitchen and moves each order through preparation.",
+    u"Uma plataforma de pedidos para restaurantes: um cardápio digital por onde o cliente pede, e um gestor de pedidos que roda numa tela na cozinha e move cada pedido pelo preparo.",
+    u"Una plataforma de pedidos para restaurantes: una carta digital desde la que el cliente pide, y un gestor de pedidos que corre en una pantalla en la cocina y mueve cada pedido por la preparación.")
+add("work.sopede.p2",
+    u"The hard part was never the menu. It was keeping the kitchen screen, the customer&rsquo;s phone and the storefront agreeing about the same order at the same moment, on restaurant wifi that drops.",
+    u"A parte difícil nunca foi o cardápio. Foi manter a tela da cozinha, o celular do cliente e a loja concordando sobre o mesmo pedido no mesmo instante, num wi-fi de restaurante que cai.",
+    u"La parte difícil nunca fue la carta. Fue mantener la pantalla de la cocina, el móvil del cliente y la tienda de acuerdo sobre el mismo pedido en el mismo instante, en un wifi de restaurante que se cae.")
+
+add("work.arena.h", u"Arena", u"Arena", u"Arena")
+add("work.arena.meta", u"Own product &middot; live on Google Play", u"Produto próprio &middot; publicado na Google Play", u"Producto propio &middot; publicado en Google Play")
+add("work.arena.p1",
+    u"Management software for martial arts and sports academies, built around the two things that quietly drain a small academy: unpaid monthly fees and students who stop showing up without anyone noticing.",
+    u"Software de gestão para academias de artes marciais e esportes, construído em torno das duas coisas que drenam uma academia pequena em silêncio: mensalidade atrasada e aluno que some sem ninguém perceber.",
+    u"Software de gestión para academias de artes marciales y deportes, construido alrededor de las dos cosas que desangran en silencio a una academia pequeña: la mensualidad impagada y el alumno que deja de venir sin que nadie lo note.")
+add("work.arena.p2",
+    u"Recurring billing over PIX and card through a licensed payment institution, QR-code attendance, belt and grade progression with configurable rules, and a churn alert that fires before the student is gone for good. Revenue is a percentage of what actually gets collected, which makes the payment pipeline the part that must never quietly fail.",
+    u"Cobrança recorrente por PIX e cartão através de uma instituição de pagamento autorizada, presença por QR code, progressão de faixas e graus com regras configuráveis, e um alerta de evasão que dispara antes do aluno sumir de vez. A receita é um percentual do que é efetivamente recebido, o que torna a esteira de pagamento a parte que não pode falhar em silêncio.",
+    u"Cobro recurrente por PIX y tarjeta a través de una entidad de pago autorizada, asistencia por código QR, progresión de cinturones y grados con reglas configurables, y una alerta de abandono que salta antes de que el alumno se vaya del todo. Los ingresos son un porcentaje de lo efectivamente cobrado, lo que convierte la pasarela de pago en la parte que no puede fallar en silencio.")
+
+add("work.cidade.h", u"Cidade Cidad\u00e3", u"Cidade Cidad\u00e3", u"Cidade Cidad\u00e3")
+add("work.cidade.meta", u"Own product &middot; civic tech &middot; Google Play",
+    u"Produto pr\u00f3prio &middot; govtech &middot; Google Play",
+    u"Producto propio &middot; govtech &middot; Google Play")
+add("work.cidade.p1",
+    u"A channel between a citizen and their city hall. Residents report a pothole, a dead streetlight or an illegal dump with a photo and a GPS pin, get a protocol number, and follow it until somebody closes it with photographic evidence.",
+    u"Um canal entre o cidad\u00e3o e a prefeitura. O morador reporta um buraco, uma l\u00e2mpada queimada ou um descarte irregular com foto e ponto no GPS, recebe um n\u00famero de protocolo e acompanha at\u00e9 algu\u00e9m encerrar com foto de evid\u00eancia.",
+    u"Un canal entre el ciudadano y su ayuntamiento. El vecino reporta un bache, una farola apagada o un vertido con foto y punto GPS, recibe un n\u00famero de expediente y lo sigue hasta que alguien lo cierra con prueba fotogr\u00e1fica.")
+add("work.cidade.p2",
+    u"Two constraints shaped the build. Faces and licence plates are blurred automatically before a photo is ever stored, because a public complaint feed is not allowed to become surveillance. And near-duplicate reports are detected at the same location, or the same pothole arrives fifty times and the queue becomes useless to the people who have to work it.",
+    u"Duas restri\u00e7\u00f5es moldaram a constru\u00e7\u00e3o. Rostos e placas s\u00e3o desfocados automaticamente antes de a foto ser armazenada, porque um mural p\u00fablico de reclama\u00e7\u00f5es n\u00e3o pode virar vigil\u00e2ncia. E reclama\u00e7\u00f5es quase id\u00eanticas s\u00e3o detectadas no mesmo local, ou o mesmo buraco chega cinquenta vezes e a fila deixa de servir para quem precisa trabalhar nela.",
+    u"Dos restricciones marcaron la construcci\u00f3n. Las caras y las matr\u00edculas se difuminan autom\u00e1ticamente antes de guardar la foto, porque un muro p\u00fablico de quejas no puede convertirse en vigilancia. Y se detectan reportes casi id\u00e9nticos en la misma ubicaci\u00f3n, o el mismo bache llega cincuenta veces y la cola deja de servir a quien tiene que trabajarla.")
+
+add("work.rafael.h", u"Rafael IA", u"Rafael IA", u"Rafael IA")
+add("work.rafael.meta", u"Own product &middot; LLM assistant &middot; Google Play",
+    u"Produto pr\u00f3prio &middot; assistente com IA &middot; Google Play",
+    u"Producto propio &middot; asistente con IA &middot; Google Play")
+add("work.rafael.p1",
+    u"An assistant for the building site, aimed at bricklayers, foremen and site engineers rather than at office staff. It answers the questions that actually come up with a bag of cement in hand: how many blocks per square metre, what concrete mix, how much rebar, what a slab will cost.",
+    u"Um assistente para o canteiro de obras, feito para pedreiro, mestre de obras e engenheiro de campo, n\u00e3o para quem est\u00e1 no escrit\u00f3rio. Responde as perguntas que aparecem de verdade com o saco de cimento na m\u00e3o: quantos blocos por metro quadrado, qual o tra\u00e7o do concreto, quanta ferragem, quanto sai a laje.",
+    u"Un asistente para la obra, pensado para alba\u00f1iles, capataces e ingenieros de campo, no para la oficina. Responde las preguntas que surgen de verdad con el saco de cemento en la mano: cu\u00e1ntos bloques por metro cuadrado, qu\u00e9 dosificaci\u00f3n de hormig\u00f3n, cu\u00e1nta armadura, cu\u00e1nto cuesta una losa.")
+add("work.rafael.p2",
+    u"The engineering problem is not the chat window. It is keeping the numbers right: a language model that improvises a concrete mix is worse than no app at all, so the calculations are constrained rather than generated freely.",
+    u"O problema de engenharia n\u00e3o \u00e9 a janela de conversa. \u00c9 manter os n\u00fameros corretos: um modelo de linguagem que improvisa tra\u00e7o de concreto \u00e9 pior do que n\u00e3o ter aplicativo nenhum, ent\u00e3o os c\u00e1lculos s\u00e3o restringidos, e n\u00e3o gerados livremente.",
+    u"El problema de ingenier\u00eda no es la ventana de chat. Es mantener los n\u00fameros correctos: un modelo de lenguaje que improvisa una dosificaci\u00f3n de hormig\u00f3n es peor que no tener app, as\u00ed que los c\u00e1lculos est\u00e1n acotados, no generados libremente.")
+
+# ---- compact strip -------------------------------------------------------
+add("also.label", u"Also shipped", u"Tamb\u00e9m publicado", u"Tambi\u00e9n publicado")
+add("also.h2", u"Smaller things, and one I helped build.",
+    u"Coisas menores, e uma que ajudei a construir.",
+    u"Cosas m\u00e1s peque\u00f1as, y una que ayud\u00e9 a construir.")
+add("also.gato.h", u"Gato X Telhado", u"Gato X Telhado", u"Gato X Telhado")
+add("also.gato.p", u"A reflex arcade game on Google Play, wired into Play Games global leaderboards. Built mostly to keep the mobile release pipeline sharp.",
+    u"Um jogo arcade de reflexo na Google Play, ligado aos placares globais do Play Games. Feito sobretudo para manter a esteira de publica\u00e7\u00e3o mobile afiada.",
+    u"Un juego arcade de reflejos en Google Play, conectado a las clasificaciones globales de Play Games. Hecho sobre todo para mantener afinado el proceso de publicaci\u00f3n m\u00f3vil.")
+add("also.kuak.h", u"Kuak", u"Kuak", u"Kuak")
+add("also.kuak.p", u"A platform where influencers and brands find each other, with social metrics pulled in and refreshed automatically. I contributed to this one rather than owning it.",
+    u"Uma plataforma onde influenciadores e marcas se encontram, com m\u00e9tricas das redes sociais puxadas e atualizadas automaticamente. Nesta eu participei, n\u00e3o \u00e9 produto meu.",
+    u"Una plataforma donde influencers y marcas se encuentran, con m\u00e9tricas sociales importadas y actualizadas autom\u00e1ticamente. En esta particip\u00e9, no es producto m\u00edo.")
+add("also.flowlyx", u"My products are published under Flowlyx, my own software studio.",
+    u"Meus produtos s\u00e3o publicados sob a Flowlyx, meu est\u00fadio de software.",
+    u"Mis productos se publican bajo Flowlyx, mi propio estudio de software.")
+
+add("work.visit", u"Visit the site &rarr;", u"Ver o site &rarr;", u"Ver el sitio &rarr;")
+
+# ---------------------------------------------------------------- AI section
+add("aisec.label", u"AI in production", u"IA em produ\u00e7\u00e3o", u"IA en producci\u00f3n")
+add("aisec.h2", u"Anyone can call the API. The hard part comes after.",
+    u"Chamar a API qualquer um chama. A parte dif\u00edcil vem depois.",
+    u"Llamar a la API la llama cualquiera. La parte dif\u00edcil viene despu\u00e9s.")
+add("aisec.intro",
+    u"A demo takes an afternoon. Keeping a language model useful once real users are hitting it &mdash; with costs that do not spiral, answers you can trust, and a way to know when a change made things worse &mdash; is a different job, and it is the one I do.",
+    u"Uma demo sai numa tarde. Manter um modelo de linguagem \u00fatil depois que usu\u00e1rio de verdade come\u00e7a a bater nele &mdash; com custo que n\u00e3o dispara, resposta em que d\u00e1 para confiar, e um jeito de saber quando uma mudan\u00e7a piorou tudo &mdash; \u00e9 outro trabalho, e \u00e9 esse que eu fa\u00e7o.",
+    u"Una demo sale en una tarde. Mantener un modelo de lenguaje \u00fatil una vez que los usuarios reales lo golpean &mdash; con costes que no se disparan, respuestas fiables y una forma de saber cu\u00e1ndo un cambio empeor\u00f3 las cosas &mdash; es otro trabajo, y es el que hago yo.")
+
+add("aisec.ship.h", u"LLM products, shipped", u"Produtos com LLM, publicados", u"Productos con LLM, publicados")
+add("aisec.ship.p",
+    u"Rafael IA is on Google Play: an assistant that answers construction-site questions and runs the material calculations behind them. I also built a nutrition assistant on Gemini that reads a photo of a meal and returns its nutritional breakdown, and transcribes a spoken description when the user would rather talk than type.",
+    u"O Rafael IA est\u00e1 na Google Play: um assistente que responde d\u00favidas de obra e roda os c\u00e1lculos de material por tr\u00e1s delas. Tamb\u00e9m constru\u00ed um assistente de nutri\u00e7\u00e3o sobre o Gemini que l\u00ea a foto de uma refei\u00e7\u00e3o e devolve a composi\u00e7\u00e3o nutricional, e transcreve a descri\u00e7\u00e3o falada quando o usu\u00e1rio prefere falar a digitar.",
+    u"Rafael IA est\u00e1 en Google Play: un asistente que responde dudas de obra y ejecuta los c\u00e1lculos de material detr\u00e1s de ellas. Tambi\u00e9n constru\u00ed un asistente de nutrici\u00f3n sobre Gemini que lee la foto de una comida y devuelve su composici\u00f3n nutricional, y transcribe la descripci\u00f3n hablada cuando el usuario prefiere hablar a escribir.")
+
+add("aisec.trust.h", u"Guardrails where the answer must be right",
+    u"Trava onde a resposta precisa estar certa",
+    u"L\u00edmites donde la respuesta debe ser correcta")
+add("aisec.trust.p",
+    u"A model that improvises a concrete mix is worse than no app at all. So in Rafael IA the arithmetic is constrained rather than generated: the model handles the conversation, deterministic code handles the numbers. Knowing which half is which is most of the design work.",
+    u"Um modelo que improvisa tra\u00e7o de concreto \u00e9 pior do que n\u00e3o ter aplicativo. Ent\u00e3o no Rafael IA a conta \u00e9 restringida, e n\u00e3o gerada: o modelo cuida da conversa, c\u00f3digo determin\u00edstico cuida dos n\u00fameros. Saber qual metade \u00e9 qual \u00e9 a maior parte do projeto.",
+    u"Un modelo que improvisa una dosificaci\u00f3n de hormig\u00f3n es peor que no tener app. Por eso en Rafael IA la aritm\u00e9tica est\u00e1 acotada, no generada: el modelo lleva la conversaci\u00f3n, el c\u00f3digo determinista lleva los n\u00fameros. Saber qu\u00e9 mitad es cu\u00e1l es la mayor parte del dise\u00f1o.")
+
+add("aisec.measure.h", u"Measured, not vibed", u"Medido, n\u00e3o no feeling", u"Medido, no a ojo")
+add("aisec.measure.p",
+    u"Prompts under version control, structured output the application can actually rely on, cost tracked per request, and an eval set that tells me when a prompt change made accuracy worse instead of better. Without that last one you are not improving a system, you are redecorating it.",
+    u"Prompts sob controle de vers\u00e3o, sa\u00edda estruturada em que a aplica\u00e7\u00e3o realmente pode confiar, custo medido por requisi\u00e7\u00e3o, e um conjunto de eval que me diz quando uma mudan\u00e7a de prompt piorou a acur\u00e1cia em vez de melhorar. Sem esse \u00faltimo voc\u00ea n\u00e3o est\u00e1 melhorando um sistema, est\u00e1 redecorando.",
+    u"Prompts bajo control de versiones, salida estructurada en la que la aplicaci\u00f3n puede confiar de verdad, coste medido por solicitud, y un conjunto de evaluaci\u00f3n que me dice cu\u00e1ndo un cambio de prompt empeor\u00f3 la precisi\u00f3n en vez de mejorarla. Sin esto \u00faltimo no est\u00e1s mejorando un sistema, lo est\u00e1s redecorando.")
+
+add("aisec.vision.h", u"Vision, and knowing when not to store something",
+    u"Vis\u00e3o computacional, e saber quando n\u00e3o guardar algo",
+    u"Visi\u00f3n, y saber cu\u00e1ndo no guardar algo")
+add("aisec.vision.p",
+    u"In Cidade Cidad\u00e3, every photo of a street problem passes through automatic blurring of faces and licence plates before it is ever written to storage. A public complaint feed that quietly becomes a surveillance archive is a failure of engineering, not of policy.",
+    u"No Cidade Cidad\u00e3, toda foto de problema urbano passa por desfoque autom\u00e1tico de rostos e placas antes de ser gravada. Um mural p\u00fablico de reclama\u00e7\u00f5es que silenciosamente vira arquivo de vigil\u00e2ncia \u00e9 falha de engenharia, n\u00e3o de pol\u00edtica.",
+    u"En Cidade Cidad\u00e3, cada foto de un problema urbano pasa por un difuminado autom\u00e1tico de caras y matr\u00edculas antes de guardarse. Un muro p\u00fablico de quejas que en silencio se convierte en un archivo de vigilancia es un fallo de ingenier\u00eda, no de pol\u00edtica.")
+
+add("aisec.claude.h", u"Claude in the daily loop", u"Claude no dia a dia", u"Claude en el d\u00eda a d\u00eda")
+add("aisec.claude.p",
+    u"I work with Claude Code every day, and it is the reason I can quote a fixed price and mean it. This site &mdash; three languages, a quote configurator, a build pipeline &mdash; was built that way. It does not replace knowing what the code should do; it removes the hours between deciding and having it.",
+    u"Trabalho com o Claude Code todos os dias, e \u00e9 por isso que consigo fechar pre\u00e7o fixo e cumprir. Este site &mdash; tr\u00eas idiomas, um configurador de or\u00e7amento, uma esteira de build &mdash; foi feito assim. N\u00e3o substitui saber o que o c\u00f3digo deve fazer; elimina as horas entre decidir e ter pronto.",
+    u"Trabajo con Claude Code a diario, y por eso puedo cerrar un precio fijo y cumplirlo. Este sitio &mdash; tres idiomas, un configurador de presupuesto, un pipeline de build &mdash; se hizo as\u00ed. No sustituye saber qu\u00e9 debe hacer el c\u00f3digo; elimina las horas entre decidirlo y tenerlo.")
+
+add("aisec.providers.h", u"Providers", u"Fornecedores", u"Proveedores")
+add("aisec.providers.p",
+    u"Claude, Gemini and OpenAI. I build the provider behind an interface so swapping one out is a configuration change, not a rewrite &mdash; the pricing and the leaderboard both move too fast to marry any of them.",
+    u"Claude, Gemini e OpenAI. Deixo o fornecedor atr\u00e1s de uma interface para que trocar seja mudan\u00e7a de configura\u00e7\u00e3o, e n\u00e3o reescrita &mdash; o pre\u00e7o e o ranking mudam r\u00e1pido demais para casar com algum deles.",
+    u"Claude, Gemini y OpenAI. Dejo al proveedor detr\u00e1s de una interfaz para que cambiarlo sea una modificaci\u00f3n de configuraci\u00f3n, no una reescritura &mdash; el precio y el ranking cambian demasiado r\u00e1pido como para casarse con ninguno.")
+
+add("nav.ai", u"AI", u"IA", u"IA")
 
 # ---------------------------------------------------------------- timeline
 add("hist.label", u"Full history", u"Trajetória completa", u"Trayectoria completa")

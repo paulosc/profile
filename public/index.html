@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="Paulo Carvalho — Java Backend Engineer">
 <meta name="twitter:description" content="Java backend engineer, 18 years. Telecom for Ericsson, banking for Itaú, healthcare in Canada.">
 <meta name="twitter:image" content="https://paulosergiocarvalho.com.br/og.png">
-<link rel="stylesheet" href="/style.css?v=31d8763a">
+<link rel="stylesheet" href="/style.css?v=0dc7078f">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%231B4FD8%22/><text x=%2216%22 y=%2223%22 font-family=%22monospace%22 font-size=%2219%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>P</text></svg>">
 </head>
 <body>
@@ -28,6 +28,7 @@
     <div class="links">
       <a href="/#work" data-i18n="nav.work">Work</a>
       <a href="/#history" data-i18n="nav.experience">Experience</a>
+      <a href="/#ai" data-i18n="nav.ai">AI</a>
       <a href="/#about" data-i18n="nav.about">About</a>
       <a href="/services" data-i18n="nav.services">Services &amp; pricing</a>
       <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="pt">PT</button><button type="button" data-lang="es">ES</button></div>
@@ -99,12 +100,53 @@
 
       <article class="work">
         <div class="work-h">
-          <h3 data-i18n="work.pedifood.h">PediFood</h3>
-          <span class="lbl" data-i18n="work.pedifood.meta">Own product</span>
+          <h3 data-i18n="work.arena.h">Arena</h3>
+          <span class="lbl" data-i18n="work.arena.meta">Own product &middot; live on Google Play</span>
         </div>
         <div class="work-b">
-          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.pedifood.p1">A delivery platform built for small towns rather than capitals &mdash; the places the big apps ignore because the order volume does not justify their commission. Java and Spring Boot on the backend, Angular on the front, running on AWS.</p>
-          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">AWS</span></div>
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.arena.p1">Management software for martial arts and sports academies, built around the two things that quietly drain a small academy: unpaid monthly fees and students who stop showing up without anyone noticing.</p>
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.arena.p2">Recurring billing over PIX and card through a licensed payment institution, QR-code attendance, belt and grade progression with configurable rules, and a churn alert that fires before the student is gone for good. Revenue is a percentage of what actually gets collected, which makes the payment pipeline the part that must never quietly fail.</p>
+          <a class="visit" href="https://arenatatame.com.br/" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+          <div class="tags"><span class="tag">Recurring billing</span><span class="tag">PIX</span><span class="tag">Payment gateway</span><span class="tag">Android</span><span class="tag">Firebase</span><span class="tag">Multi-tenant</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-h">
+          <h3 data-i18n="work.sopede.h">SôPede</h3>
+          <span class="lbl" data-i18n="work.sopede.meta">Own product &middot; in production</span>
+        </div>
+        <div class="work-b">
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.sopede.p1">An ordering platform for restaurants: a digital menu customers order from, and a kitchen-side order manager that runs on a screen in the kitchen and moves each order through preparation.</p>
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.sopede.p2">The hard part was never the menu. It was keeping the kitchen screen, the customer&rsquo;s phone and the storefront agreeing about the same order at the same moment, on restaurant wifi that drops.</p>
+          <a class="visit" href="https://pedfood-585f8.web.app/para-restaurantes" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+          <div class="tags"><span class="tag">Realtime orders</span><span class="tag">Kitchen display</span><span class="tag">Firebase</span><span class="tag">Multi-tenant</span><span class="tag">Web + mobile</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-h">
+          <h3 data-i18n="work.cidade.h">Cidade Cidadã</h3>
+          <span class="lbl" data-i18n="work.cidade.meta">Own product &middot; civic tech &middot; Google Play</span>
+        </div>
+        <div class="work-b">
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.cidade.p1">A channel between a citizen and their city hall. Residents report a pothole, a dead streetlight or an illegal dump with a photo and a GPS pin, get a protocol number, and follow it until somebody closes it with photographic evidence.</p>
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.cidade.p2">Two constraints shaped the build. Faces and licence plates are blurred automatically before a photo is ever stored, because a public complaint feed is not allowed to become surveillance. And near-duplicate reports are detected at the same location, or the same pothole arrives fifty times and the queue becomes useless to the people who have to work it.</p>
+          <a class="visit" href="https://play.google.com/store/apps/details?id=br.gov.cidadecidada.cidade_cidada" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+          <div class="tags"><span class="tag">Android</span><span class="tag">Geolocation</span><span class="tag">Image privacy</span><span class="tag">Moderation</span><span class="tag">Firebase</span></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-h">
+          <h3 data-i18n="work.rafael.h">Rafael IA</h3>
+          <span class="lbl" data-i18n="work.rafael.meta">Own product &middot; LLM assistant &middot; Google Play</span>
+        </div>
+        <div class="work-b">
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.rafael.p1">An assistant for the building site, aimed at bricklayers, foremen and site engineers rather than at office staff. It answers the questions that actually come up with a bag of cement in hand: how many blocks per square metre, what concrete mix, how much rebar, what a slab will cost.</p>
+          <p style="font-size:.94rem;color:var(--ink-2)" data-i18n-html="work.rafael.p2">The engineering problem is not the chat window. It is keeping the numbers right: a language model that improvises a concrete mix is worse than no app at all, so the calculations are constrained rather than generated freely.</p>
+          <a class="visit" href="https://play.google.com/store/apps/details?id=com.forma3dstudio.rafaelia" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+          <div class="tags"><span class="tag">LLM</span><span class="tag">Prompt design</span><span class="tag">In-app purchases</span><span class="tag">Android</span></div>
         </div>
       </article>
 
@@ -139,6 +181,58 @@
     </div>
   </div>
 </section>
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-lbl"><span class="lbl" data-i18n="aisec.label">AI in production</span></div>
+    <h2 data-i18n="aisec.h2">Anyone can call the API. The hard part comes after.</h2>
+    <p class="lede" style="margin-top:14px;margin-bottom:32px" data-i18n-html="aisec.intro">A demo takes an afternoon. Keeping a language model useful once real users are hitting it &mdash; with costs that do not spiral, answers you can trust, and a way to know when a change made things worse &mdash; is a different job, and it is the one I do.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3 data-i18n="aisec.ship.h">LLM products, shipped</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.ship.p">Rafael IA is on Google Play: an assistant that answers construction-site questions and runs the material calculations behind them. I also built a nutrition assistant on Gemini that reads a photo of a meal and returns its nutritional breakdown, and transcribes a spoken description when the user would rather talk than type.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="aisec.trust.h">Guardrails where the answer must be right</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.trust.p">A model that improvises a concrete mix is worse than no app at all. So in Rafael IA the arithmetic is constrained rather than generated: the model handles the conversation, deterministic code handles the numbers. Knowing which half is which is most of the design work.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="aisec.measure.h">Measured, not vibed</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.measure.p">Prompts under version control, structured output the application can actually rely on, cost tracked per request, and an eval set that tells me when a prompt change made accuracy worse instead of better. Without that last one you are not improving a system, you are redecorating it.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="aisec.vision.h">Vision, and knowing when not to store something</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.vision.p">In Cidade Cidadã, every photo of a street problem passes through automatic blurring of faces and licence plates before it is ever written to storage. A public complaint feed that quietly becomes a surveillance archive is a failure of engineering, not of policy.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="aisec.claude.h">Claude in the daily loop</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.claude.p">I work with Claude Code every day, and it is the reason I can quote a fixed price and mean it. This site &mdash; three languages, a quote configurator, a build pipeline &mdash; was built that way. It does not replace knowing what the code should do; it removes the hours between deciding and having it.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="aisec.providers.h">Providers</h3>
+        <p style="font-size:.93rem;color:var(--ink-2)" data-i18n-html="aisec.providers.p">Claude, Gemini and OpenAI. I build the provider behind an interface so swapping one out is a configuration change, not a rewrite &mdash; the pricing and the leaderboard both move too fast to marry any of them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="also">
+  <div class="wrap">
+    <div class="sec-lbl"><span class="lbl" data-i18n="also.label">Also shipped</span></div>
+    <h2 data-i18n="also.h2">Smaller things, and one I helped build.</h2>
+    <p class="lede" style="margin-top:14px;margin-bottom:28px" data-i18n-html="also.flowlyx">My products are published under Flowlyx, my own software studio.</p>
+    <div class="grid g2">
+        <div class="card">
+          <h3 data-i18n="also.gato.h">Gato X Telhado</h3>
+          <p style="font-size:.92rem;color:var(--ink-2)" data-i18n-html="also.gato.p">A reflex arcade game on Google Play, wired into Play Games global leaderboards. Built mostly to keep the mobile release pipeline sharp.</p>
+          <a class="visit" href="https://play.google.com/store/apps/details?id=com.forma3dstudio.catxroof" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="also.kuak.h">Kuak</h3>
+          <p style="font-size:.92rem;color:var(--ink-2)" data-i18n-html="also.kuak.p">A platform where influencers and brands find each other, with social metrics pulled in and refreshed automatically. I contributed to this one rather than owning it.</p>
+          <a class="visit" href="https://kuak.com/" target="_blank" rel="noopener" data-i18n="work.visit">Visit the site &rarr;</a>
+        </div>
+    </div>
+  </div>
+</section>
 <section id="about">
   <div class="wrap">
     <div class="sec-lbl"><span class="lbl" data-i18n="about.label">About</span></div>
@@ -152,7 +246,7 @@
       <div style="display:flex;flex-direction:column;gap:14px">
         <div class="card">
           <span class="lbl" data-i18n="about.stack">Core stack</span>
-          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">AWS SQS</span><span class="tag">Microservices</span><span class="tag">REST</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span><span class="tag">Python</span><span class="tag">Kotlin</span><span class="tag">Angular</span><span class="tag">Vue</span><span class="tag">TDD / BDD</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span></div>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">AWS SQS</span><span class="tag">Microservices</span><span class="tag">REST</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span><span class="tag">Python</span><span class="tag">Kotlin</span><span class="tag">Angular</span><span class="tag">Vue</span><span class="tag">TDD / BDD</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">OpenAI</span><span class="tag">LLM integration</span><span class="tag">Evals</span><span class="tag">Structured output</span></div>
         </div>
         <div class="card">
           <span class="lbl" data-i18n="about.also">Also worked with</span>
@@ -196,6 +290,6 @@
   </div>
 </footer>
 
-<script src="/i18n.js?v=2487cbb7"></script>
+<script src="/i18n.js?v=dfcf72b2"></script>
 </body>
 </html>
