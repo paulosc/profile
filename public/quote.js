@@ -266,11 +266,19 @@ $("send").addEventListener("click", function(){
                       "&body=" + encodeURIComponent(body);
   $("toWhats").href = "https://wa.me/5535991040850?text=" + encodeURIComponent(subj + "\n\n" + body);
 
-  $("sendPanel").hidden = false;
-  $("sendPanel").scrollIntoView({block: "nearest", behavior: "smooth"});
+  // The quote card is position:sticky, which creates its own stacking context
+  // and traps the overlay's z-index inside it. Reparenting to <body> on first
+  // open puts the dialog back in the root context, above everything.
+  var panel = $("sendPanel");
+  if (panel.parentNode !== document.body) document.body.appendChild(panel);
+  panel.hidden = false;
 });
 
-$("closePanel").addEventListener("click", function(){ $("sendPanel").hidden = true; });
+function closeSend(){ $("sendPanel").hidden = true; }
+$("closePanel").addEventListener("click", closeSend);
+// Clicking the backdrop closes; clicking inside the box must not.
+$("sendPanel").addEventListener("click", function(e){ if (e.target === $("sendPanel")) closeSend(); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeSend(); });
 
 // wire the footer email from the constant
 (function(){

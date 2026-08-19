@@ -63,7 +63,18 @@ Two pages, deliberately separated: the home page presents who I am, `/services` 
 - **Pricing** — the `SERVICES` object in `quote.js`. Each service has a `base`, a `days` estimate and option groups. Radio groups must keep their first option at `p: 0`, because that option defines the advertised "from $X" on the service card. Adding an option means adding its translation to `content_quote.py`.
 - **Portfolio** — the `work.*` keys in `content.py` and the `workcard(...)` calls in `build.py`.
 
-## Two traps worth knowing
+## Three traps worth knowing
+
+**An author `display` beats the browser's `[hidden]`.** The send dialog was
+styled `display:flex` and marked `hidden`; the attribute lost, so the dialog was
+permanently on screen and clicking the button appeared to do nothing. Any
+component styled with `display` needs its own `[hidden]{display:none}` rule.
+
+**`position:sticky` creates a stacking context.** The dialog lives inside the
+sticky quote card, so its `z-index:200` was trapped there and page content
+painted over it. `quote.js` reparents the overlay to `<body>` on first open.
+
+
 
 **Never let CSS hide what only JavaScript can reveal.** The scroll animation
 started as a plain `.reveal{opacity:0}` plus a script that added `.in`. The

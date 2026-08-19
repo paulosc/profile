@@ -402,6 +402,7 @@ def build_services():
           <button type="button" class="btn btn-solid" id="send" data-i18n="q.send">%s</button>
           <button type="button" class="btn btn-ghost" id="copy" data-i18n="q.copy">%s</button>
           <div class="sendpanel" id="sendPanel" hidden>
+           <div class="sendbox" role="dialog" aria-modal="true" aria-labelledby="sendTitle">
             %s
             <p class="fineprint" data-i18n-html="q.sent.p">%s</p>
             <a class="btn btn-solid" id="toGmail" target="_blank" rel="noopener" data-i18n="q.sent.gmail">%s</a>
@@ -410,6 +411,7 @@ def build_services():
             <p class="fineprint"><span data-i18n="q.sent.manual">%s</span>
               <b>pcarvalhosergio@gmail.com</b></p>
             <button type="button" class="linkish" id="closePanel" data-i18n="q.sent.close">%s</button>
+           </div>
           </div>
           <p class="fineprint" data-i18n-html="q.fine">%s</p>
         </div>
@@ -424,7 +426,7 @@ def build_services():
        t("q.terms", "span", "fineprint"),
        t("q.delivery", "span", "lbl"), t("q.revisions", "span", "lbl"),
        raw("q.send"), raw("q.copy"),
-       t("q.sent.h", "h3"), raw("q.sent.p"), raw("q.sent.gmail"), raw("q.sent.mail"),
+       t("q.sent.h", "h3", None, 'id="sendTitle"'), raw("q.sent.p"), raw("q.sent.gmail"), raw("q.sent.mail"),
        raw("q.sent.whats"), raw("q.sent.manual"), raw("q.sent.close"),
        raw("q.fine"))
 

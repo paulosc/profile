@@ -185,13 +185,24 @@ footer{padding:clamp(48px,7vw,80px) 0 60px}
 .visit:hover{border-bottom-color:var(--accent)}
 
 /* send-brief panel: shown after the button copies the brief */
+/* An author `display` beats the browser's own [hidden] rule, so the attribute
+   has to be honoured explicitly or the dialog is simply always on screen. */
+.sendpanel[hidden]{display:none}
 .sendpanel{
-  display:flex; flex-direction:column; gap:9px; padding:16px;
-  border:1px solid var(--accent); border-radius:var(--r); background:var(--accent-soft);
+  position:fixed; inset:0; z-index:200; display:flex;
+  align-items:center; justify-content:center; padding:20px;
+  background:color-mix(in srgb, var(--ink) 72%, transparent);
+  backdrop-filter:blur(3px);
 }
-.sendpanel h3{font-size:.98rem}
-.sendpanel .btn{width:100%; text-align:center; padding:10px 16px; font-size:.9rem}
-.sendpanel b{font-family:var(--mono); font-size:.88em; overflow-wrap:anywhere}
+.sendbox{
+  width:min(420px,100%); max-height:88vh; overflow-y:auto;
+  display:flex; flex-direction:column; gap:10px; padding:22px;
+  border:1px solid var(--accent); border-radius:var(--r);
+  background:var(--surface); box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+}
+.sendbox h3{font-size:1.02rem}
+.sendbox .btn{width:100%; text-align:center; padding:11px 16px; font-size:.92rem}
+.sendbox b{font-family:var(--mono); font-size:.88em; overflow-wrap:anywhere}
 .linkish{
   background:none; border:none; padding:0; align-self:flex-start; cursor:pointer;
   font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
