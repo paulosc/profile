@@ -3,11 +3,13 @@
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
-    "rewrites": [{ "source": "**", "destination": "/index.html" }],
+    "trailingSlash": false,
     "headers": [
       {
-        "source": "**/*.html",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+        "source": "**/*.@(html|css|js)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        ]
       }
     ]
   }

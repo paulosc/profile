@@ -1,342 +1,46 @@
-<title>Paulo Carvalho — Backend Engineering</title>
-<style>
-:root{
-  --bg:#EDEFF2; --surface:#FFFFFF; --surface-2:#F5F7F9; --field:#FAFBFC;
-  --ink:#0D1216; --ink-2:#36414B; --muted:#6A7681; --line:#D4DAE1; --line-2:#E4E9EE;
-  --accent:#1B4FD8; --accent-2:#123AA8; --accent-soft:#E3EAFB;
-  --pos:#15704E; --pos-soft:#DCF0E7; --warn:#96590F;
-  --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Liberation Mono",monospace;
-  --r:4px;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0A0E12; --surface:#121820; --surface-2:#171F28; --field:#0E141B;
-    --ink:#E9EEF3; --ink-2:#B3BFCA; --muted:#7B8896; --line:#242E39; --line-2:#1C242D;
-    --accent:#6E9BFF; --accent-2:#8FB3FF; --accent-soft:#12203B;
-    --pos:#4FBE90; --pos-soft:#0F2620; --warn:#D19B4E;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0A0E12; --surface:#121820; --surface-2:#171F28; --field:#0E141B;
-  --ink:#E9EEF3; --ink-2:#B3BFCA; --muted:#7B8896; --line:#242E39; --line-2:#1C242D;
-  --accent:#6E9BFF; --accent-2:#8FB3FF; --accent-soft:#12203B;
-  --pos:#4FBE90; --pos-soft:#0F2620; --warn:#D19B4E;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
-body{
-  margin:0; background:var(--bg); color:var(--ink); font-family:var(--body);
-  font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:1120px; margin:0 auto; padding:0 clamp(16px,4vw,40px)}
-h1,h2,h3{margin:0; font-weight:750; letter-spacing:-.025em; line-height:1.1; text-wrap:balance}
-h1{font-size:clamp(2.4rem,6.5vw,4.4rem)}
-h2{font-size:clamp(1.6rem,3.6vw,2.4rem)}
-h3{font-size:1.12rem; letter-spacing:-.012em; font-weight:700}
-p{margin:0}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
-.lbl{font-family:var(--mono); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted)}
-.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
-.muted{color:var(--muted)}
-.lede{font-size:clamp(1.02rem,1.9vw,1.2rem); color:var(--ink-2); max-width:62ch}
-
-/* NAV */
-nav{
-  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
-}
-nav .inner{display:flex; align-items:center; justify-content:space-between; gap:20px; height:60px}
-nav .brand{font-family:var(--mono); font-size:.84rem; font-weight:600; letter-spacing:.02em; color:var(--ink); text-decoration:none}
-nav .links{display:flex; gap:22px; align-items:center}
-nav .links a{font-size:.88rem; color:var(--ink-2); text-decoration:none}
-nav .links a:hover{color:var(--accent)}
-@media (max-width:720px){ nav .links a:not(.cta){display:none} }
-.cta{
-  background:var(--accent); color:#fff!important; padding:8px 16px; border-radius:var(--r);
-  font-size:.85rem!important; font-weight:600; text-decoration:none; white-space:nowrap;
-}
-.cta:hover{background:var(--accent-2); color:#fff!important}
-.status{
-  display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:.7rem;
-  letter-spacing:.08em; text-transform:uppercase; color:var(--pos);
-  background:var(--pos-soft); padding:5px 11px; border-radius:99px;
-}
-.dot{width:6px; height:6px; border-radius:50%; background:var(--pos); flex:none}
-
-/* SECTIONS */
-section{padding:clamp(56px,9vw,104px) 0; border-bottom:1px solid var(--line-2)}
-.sec-lbl{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-.sec-lbl::after{content:""; flex:1; height:1px; background:var(--line)}
-
-/* HERO */
-.hero{padding-top:clamp(48px,8vw,86px); border-bottom:1px solid var(--line-2)}
-.hero h1{margin:20px 0 24px}
-.hero .accent{color:var(--accent)}
-.hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; align-items:center}
-.btn{
-  display:inline-block; padding:12px 22px; border-radius:var(--r); font-size:.94rem; font-weight:600;
-  text-decoration:none; border:1px solid var(--accent); cursor:pointer; font-family:var(--body);
-}
-.btn-solid{background:var(--accent); color:#fff}
-.btn-solid:hover{background:var(--accent-2)}
-.btn-ghost{background:transparent; color:var(--accent)}
-.btn-ghost:hover{background:var(--accent-soft)}
-
-/* CREDS */
-.creds{display:flex; flex-wrap:wrap; gap:8px 0; margin-top:44px; border-top:1px solid var(--line); padding-top:22px}
-.cred{flex:1 1 150px; padding-right:20px}
-.cred b{display:block; font-size:.96rem; font-weight:650}
-.cred span{font-family:var(--mono); font-size:.7rem; color:var(--muted); letter-spacing:.05em}
-
-/* GRID */
-.grid{display:grid; gap:16px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:24px; display:flex; flex-direction:column; gap:12px}
-.card .price{font-family:var(--mono); font-weight:700; color:var(--accent); font-size:1.02rem; font-variant-numeric:tabular-nums}
-.card ul{margin:0; padding-left:1.1em; display:flex; flex-direction:column; gap:5px; font-size:.9rem; color:var(--ink-2)}
-.card li::marker{color:var(--accent)}
-
-/* CONFIGURATOR */
-.cfg{display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start}
-@media (max-width:900px){ .cfg{grid-template-columns:1fr} }
-.cfg-main{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:clamp(18px,3vw,28px); display:flex; flex-direction:column; gap:26px}
-.step{display:flex; flex-direction:column; gap:12px}
-.step-h{display:flex; align-items:baseline; gap:10px}
-.step-n{font-family:var(--mono); font-size:.7rem; color:var(--accent); font-weight:700}
-.opts{display:grid; gap:9px}
-.opts.cols{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.opt{
-  display:flex; align-items:flex-start; gap:11px; padding:13px 15px; border:1px solid var(--line);
-  border-radius:var(--r); background:var(--field); cursor:pointer; transition:border-color .12s, background .12s;
-}
-.opt:hover{border-color:var(--accent)}
-.opt input{margin:3px 0 0; accent-color:var(--accent); flex:none; cursor:pointer}
-.opt.sel{border-color:var(--accent); background:var(--accent-soft)}
-.opt .t{flex:1; min-width:0}
-.opt .t b{display:block; font-weight:600; font-size:.94rem}
-.opt .t small{color:var(--muted); font-size:.83rem; display:block; line-height:1.45}
-.opt .p{font-family:var(--mono); font-size:.82rem; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums}
-.opt.sel .p{color:var(--accent); font-weight:600}
-
-/* QUOTE PANEL */
-.quote{position:sticky; top:78px; background:var(--surface); border:2px solid var(--accent); border-radius:var(--r); overflow:hidden}
-.quote-h{padding:16px 20px; background:var(--accent-soft); border-bottom:1px solid var(--line)}
-.quote-b{padding:20px; display:flex; flex-direction:column; gap:16px}
-.total{font-family:var(--mono); font-size:2.5rem; font-weight:700; letter-spacing:-.03em; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1}
-.meta-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-.meta-grid div{display:flex; flex-direction:column; gap:3px}
-.meta-grid b{font-family:var(--mono); font-size:1.02rem; font-variant-numeric:tabular-nums}
-.lines{display:flex; flex-direction:column; gap:6px; font-size:.85rem; max-height:190px; overflow-y:auto}
-.line{display:flex; justify-content:space-between; gap:12px; color:var(--ink-2)}
-.line span:last-child{font-family:var(--mono); color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums}
-.quote .btn{width:100%; text-align:center}
-.fineprint{font-size:.76rem; color:var(--muted); line-height:1.5}
-
-/* WORK */
-.work{border:1px solid var(--line); border-radius:var(--r); background:var(--surface); overflow:hidden}
-.work-h{padding:20px 24px; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:10px 16px; align-items:baseline; justify-content:space-between}
-.work-b{padding:20px 24px; display:flex; flex-direction:column; gap:14px}
-.tags{display:flex; flex-wrap:wrap; gap:6px}
-.tag{font-family:var(--mono); font-size:.68rem; letter-spacing:.04em; padding:3px 8px; border:1px solid var(--line); border-radius:2px; color:var(--muted); background:var(--surface-2)}
-
-/* PROCESS */
-.steps{counter-reset:s; display:grid; gap:0}
-.pstep{display:grid; grid-template-columns:44px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line-2)}
-.pstep:last-child{border-bottom:none}
-.pstep .n{font-family:var(--mono); font-size:.78rem; font-weight:700; color:var(--accent); padding-top:3px}
-.pstep .c{display:flex; flex-direction:column; gap:5px}
-
-/* FOOTER */
-footer{padding:clamp(48px,7vw,80px) 0 60px}
-.foot-grid{display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between; align-items:flex-start}
-.foot-note{margin-top:44px; padding-top:20px; border-top:1px solid var(--line); font-size:.8rem; color:var(--muted)}
-.contact-list{display:flex; flex-direction:column; gap:8px; font-size:.94rem}
-.contact-list a{text-decoration:none}
-.contact-list a:hover{text-decoration:underline}
-.toast{
-  position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(80px);
-  background:var(--ink); color:var(--bg); padding:11px 20px; border-radius:99px; font-size:.87rem;
-  font-weight:600; opacity:0; pointer-events:none; transition:transform .22s, opacity .22s; z-index:100;
-}
-.toast.on{transform:translateX(-50%) translateY(0); opacity:1}
-</style>
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paulo Carvalho — Java Backend Engineer</title>
+<meta name="description" content="Java backend engineer, 18 years. Telecom for Ericsson, banking for Itaú, healthcare in Canada.">
+<link rel="stylesheet" href="/style.css?v=2aeed2de">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%231B4FD8%22/><text x=%2216%22 y=%2223%22 font-family=%22monospace%22 font-size=%2219%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>P</text></svg>">
+</head>
+<body>
 <nav>
   <div class="wrap inner">
-    <a class="brand" href="#top">PAULO&nbsp;CARVALHO<span style="color:var(--accent)">.</span></a>
+    <a class="brand" href="/">PAULO&nbsp;CARVALHO<span style="color:var(--accent)">.</span></a>
     <div class="links">
-      <a href="#services">Services</a>
-      <a href="#quote">Get a quote</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a class="cta" href="#quote">Start a project</a>
+      <a href="/#work">Work</a>
+      <a href="/#history">Experience</a>
+      <a href="/#about">About</a>
+      <a href="/services">Services &amp; pricing</a>
+      <a class="cta" href="/services#quote">Get a quote</a>
     </div>
   </div>
 </nav>
-
-<!-- HERO -->
 <header class="hero" id="top">
   <div class="wrap">
-    <span class="status"><span class="dot"></span>Taking work · September 2026</span>
-    <h1>Backend systems that<br><span class="accent">cannot afford to fail.</span></h1>
-    <p class="lede">Eighteen years building and repairing production backends — telecom systems for Ericsson, banking microservices for Itaú, and five years on healthcare platforms for a Canadian software company. I take on fixed-scope work: third-party integrations, legacy Java upgrades, and the bug your team has been circling for weeks.</p>
+    <span class="status"><span class="dot"></span>Open to new projects</span>
+    <h1>Paulo Carvalho.<br><span class="accent">Java backend engineer.</span></h1>
+    <p class="lede">Eighteen years building and repairing production backends. Telecom systems for Ericsson, banking microservices for Ita&uacute;, five years on healthcare platforms for a Canadian software company, and seven years that also covered firmware on devices nobody could restart remotely.</p>
+    <p class="lede" style="margin-top:14px">These days I work in Java and Spring Boot with Kafka and AWS, and I build and run products of my own on the side.</p>
     <div class="hero-actions">
-      <a class="btn btn-solid" href="#quote">Price your project</a>
-      <a class="btn btn-ghost" href="#work">See the work</a>
+      <a class="btn btn-solid" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="/services">What I can build for you</a>
     </div>
 
     <div class="creds">
-      <div class="cred"><b>Ericsson</b><span>TELECOM · VIA ICC</span></div>
-      <div class="cred"><b>Itaú</b><span>BANKING · VIA ZUP</span></div>
-      <div class="cred"><b>PolicyMedical</b><span>CANADA · HEALTHCARE</span></div>
+      <div class="cred"><b>Ericsson</b><span>TELECOM &middot; VIA ICC</span></div>
+      <div class="cred"><b>Ita&uacute;</b><span>BANKING &middot; VIA ZUP</span></div>
+      <div class="cred"><b>PolicyMedical</b><span>CANADA &middot; HEALTHCARE</span></div>
       <div class="cred"><b>18 years</b><span>SINCE 2008</span></div>
-      <div class="cred"><b>Postgraduate</b><span>INATEL · ENG.</span></div>
+      <div class="cred"><b>Postgraduate</b><span>INATEL &middot; ENG.</span></div>
     </div>
   </div>
 </header>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">What I sell</span></div>
-    <h2>Fixed scope. Fixed price.</h2>
-    <p class="lede" style="margin-top:14px;margin-bottom:32px">No hourly billing, no open-ended retainers. You buy a defined outcome, you know the number before I start, and you get tests that prove it works.</p>
-
-    <div class="grid g3">
-      <div class="card">
-        <span class="lbl">Integration</span>
-        <h3>Third-party API integration</h3>
-        <span class="price">from $450</span>
-        <ul>
-          <li>OAuth2, API keys, JWT — handled properly</li>
-          <li>Retry with backoff and rate-limit handling</li>
-          <li>Webhooks and idempotency</li>
-          <li>Tests that fail loudly when the provider changes</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">Modernization</span>
-        <h3>Legacy Java &amp; Spring upgrade</h3>
-        <span class="price">from $600</span>
-        <ul>
-          <li>Java 8/11 → 17 or 21</li>
-          <li>Spring Boot 2 → 3, including javax → jakarta</li>
-          <li>Dependency conflicts and CVEs resolved</li>
-          <li>Green build and passing suite before handover</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">Rescue</span>
-        <h3>The bug nobody can find</h3>
-        <span class="price">from $300</span>
-        <ul>
-          <li>Race conditions, leaks, timeouts, lock contention</li>
-          <li>Reproduced first — that is the part people skip</li>
-          <li>Fixed with a test that fails without the fix</li>
-          <li>If I can't find it, I tell you instead of billing guesses</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">AI</span>
-        <h3>AI feature in an existing product</h3>
-        <span class="price">from $800</span>
-        <ul>
-          <li>Retrieval, extraction, classification, tool use</li>
-          <li>Eval harness so you know when quality regresses</li>
-          <li>Cost per request measured, not guessed</li>
-          <li>Built on your data and your systems</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">Data</span>
-        <h3>Scraper &amp; scheduled pipeline</h3>
-        <span class="price">from $350</span>
-        <ul>
-          <li>Extraction, normalization, relational storage</li>
-          <li>Scheduled re-checks with drift alerts</li>
-          <li>Optional dashboard</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">Infrastructure</span>
-        <h3>CI/CD from zero</h3>
-        <span class="price">from $400</span>
-        <ul>
-          <li>Build, test, deploy, rollback</li>
-          <li>GitHub Actions or GitLab CI</li>
-          <li>Environments and secrets done sanely</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="lbl">Advisory</span>
-        <h3>Architecture review</h3>
-        <span class="price">from $500</span>
-        <ul>
-          <li>I read the repository, not a slide deck</li>
-          <li>Risks, bottlenecks, scaling limits and cost</li>
-          <li>Written so a non-technical board can follow it</li>
-          <li>Optional remediation plan, sequenced by effort</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONFIGURATOR -->
-<section id="quote">
-  <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">Instant quote</span></div>
-    <h2>Price your project now.</h2>
-    <p class="lede" style="margin-top:14px;margin-bottom:32px">Pick what you need. The price and delivery date update as you go — no discovery call required to find out roughly what this costs.</p>
-
-    <div class="cfg">
-      <div class="cfg-main">
-        <div class="step">
-          <div class="step-h"><span class="step-n">01</span><h3>What do you need?</h3></div>
-          <div class="opts cols" id="svc"></div>
-        </div>
-        <div class="step" id="optStep">
-          <div class="step-h"><span class="step-n">02</span><h3>Scope</h3></div>
-          <div id="opts"></div>
-        </div>
-        <div class="step">
-          <div class="step-h"><span class="step-n">03</span><h3>Timing</h3></div>
-          <div class="opts">
-            <label class="opt" id="rushOpt">
-              <input type="checkbox" id="rush">
-              <span class="t"><b>Rush delivery</b><small>Cuts the timeline roughly in half. I reshuffle other work to do it.</small></span>
-              <span class="p">+35%</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <aside class="quote">
-        <div class="quote-h"><span class="lbl" style="color:var(--accent)">Your quote</span></div>
-        <div class="quote-b">
-          <div>
-            <div class="total" id="total">$450</div>
-            <span class="fineprint">USD · fixed price · 50% to start</span>
-          </div>
-          <div class="meta-grid">
-            <div><span class="lbl">Delivery</span><b id="days">4 days</b></div>
-            <div><span class="lbl">Revisions</span><b id="revs">2</b></div>
-          </div>
-          <div class="lines" id="lines"></div>
-          <button class="btn btn-solid" id="send">Send this brief</button>
-          <button class="btn btn-ghost" id="copy">Copy brief</button>
-          <p class="fineprint">Quote holds for 14 days. Before either of us commits, we do a 20-minute call so I can confirm the scope is what you actually need — sometimes it isn't, and I'll say so.</p>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- WORK -->
 <section id="work">
   <div class="wrap">
     <div class="sec-lbl"><span class="lbl">Selected work</span></div>
@@ -418,7 +122,7 @@ footer{padding:clamp(48px,7vw,80px) 0 60px}
 
     <!-- TIMELINE -->
     <div style="margin-top:44px">
-      <div class="sec-lbl"><span class="lbl">Full history</span></div>
+      <div class="sec-lbl" id="history"><span class="lbl">Full history</span></div>
       <div class="steps" style="max-width:80ch">
         <div class="pstep"><span class="n" style="width:auto">2023</span><div class="c"><h3>Zup — Java Backend Developer</h3><p style="color:var(--ink-2)">Banking microservices for Itaú. Java, Spring Boot, Kafka, AWS, Docker, TDD/BDD, Scrum.</p></div></div>
         <div class="pstep"><span class="n" style="width:auto">2018</span><div class="c"><h3>PolicyMedical (Canada) — Backend &amp; Full Stack Developer</h3><p style="color:var(--ink-2)">Healthcare document platforms; company later acquired by RL Datix. Java 11, Spring Boot, MySQL, MongoDB, Elasticsearch, Vue, Angular, Kafka, SQS, Jenkins, AWS.</p></div></div>
@@ -446,23 +150,53 @@ footer{padding:clamp(48px,7vw,80px) 0 60px}
       </div>
     </div>
   </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
+</section><section id="about">
   <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">How it works</span></div>
-    <h2>Four steps, no surprises.</h2>
-    <div class="steps" style="margin-top:28px;max-width:78ch">
-      <div class="pstep"><span class="n">01</span><div class="c"><h3>You send the brief</h3><p style="color:var(--ink-2)">Use the quote tool above, or just write me. I need the problem, not a specification — writing the specification is part of what you're paying for.</p></div></div>
-      <div class="pstep"><span class="n">02</span><div class="c"><h3>Twenty-minute call</h3><p style="color:var(--ink-2)">I confirm the scope and either lock the price or tell you it's wrong. Roughly one in four projects turns out to be smaller than the client assumed, and I'd rather say that up front than discover it in week two.</p></div></div>
-      <div class="pstep"><span class="n">03</span><div class="c"><h3>50% to start</h3><p style="color:var(--ink-2)">Work begins. You get repository access from day one and can watch the commits — no black box, no weekly status theatre.</p></div></div>
-      <div class="pstep"><span class="n">04</span><div class="c"><h3>Delivery, then the balance</h3><p style="color:var(--ink-2)">Code, tests, and a short written handover explaining what I did and what to watch. Revisions included as quoted. You pay the rest when it's working.</p></div></div>
+    <div class="sec-lbl"><span class="lbl">About</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2>How I got here.</h2>
+        <p style="color:var(--ink-2)">I started in 2008 as an intern writing Java, and the path since then has been unusually wide: geoprocessing first, then seven years at the Inatel Competence Center on telecom work for Ericsson alongside embedded firmware in C, then five years on healthcare software for a Canadian company, and now banking microservices.</p>
+        <p style="color:var(--ink-2)">That range is the point. Having written code for a device you cannot reach once it ships changes how you write a web service &mdash; you stop assuming the happy path and start writing the failure branch first.</p>
+        <p style="color:var(--ink-2)">I have worked in English daily since the Ericsson years, including three months on site with the client team in Sweden.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card">
+          <span class="lbl">Core stack</span>
+          <div class="tags">
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">AWS SQS</span>
+            <span class="tag">Microservices</span><span class="tag">REST</span><span class="tag">Docker</span><span class="tag">AWS</span>
+            <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span>
+            <span class="tag">Python</span><span class="tag">Kotlin</span><span class="tag">Angular</span><span class="tag">Vue</span>
+            <span class="tag">TDD / BDD</span><span class="tag">CI/CD</span><span class="tag">Jenkins</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="lbl">Also worked with</span>
+          <div class="tags">
+            <span class="tag">C</span><span class="tag">C++</span><span class="tag">FreeRTOS</span><span class="tag">Embedded Linux</span>
+            <span class="tag">JSF</span><span class="tag">PrimeFaces</span><span class="tag">Grails</span><span class="tag">Groovy</span>
+            <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Gemini</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="lbl">Languages</span>
+          <p style="font-size:.93rem;color:var(--ink-2)">Portuguese &mdash; native<br>English &mdash; advanced, daily use with international teams</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
+<section id="hire" style="background:var(--surface)">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
+    <div style="max-width:52ch;display:flex;flex-direction:column;gap:12px">
+      <span class="lbl">Available for contract work</span>
+      <h2>Need something built, upgraded or unstuck?</h2>
+      <p style="color:var(--ink-2)">I take on fixed-scope projects &mdash; API integrations, legacy Java upgrades, and the bug your team has been circling for weeks. Price agreed before I start.</p>
+    </div>
+    <a class="btn btn-solid" href="/services" style="font-size:1rem;padding:14px 26px">See services &amp; pricing</a>
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -483,219 +217,5 @@ footer{padding:clamp(48px,7vw,80px) 0 60px}
     <p class="foot-note">Paulo Sérgio Carvalho · Java backend &amp; integration engineering · Working in English and Portuguese</p>
   </div>
 </footer>
-
-<div class="toast" id="toast">Brief copied</div>
-
-<script>
-/* ---- EDIT THIS ---- */
-var EMAIL = "pcarvalhosergio@gmail.com";
-/* ------------------- */
-
-var SERVICES = {
-  api: { name:"Third-party API integration", base:450, days:4, revs:2, groups:[
-    { id:"endpoints", label:"How many endpoints?", type:"radio", opts:[
-      {v:"1-3", t:"1 to 3 endpoints", d:"A focused integration", p:0, days:0},
-      {v:"4-8", t:"4 to 8 endpoints", d:"A full feature surface", p:250, days:2},
-      {v:"9+",  t:"9 or more", d:"Whole API covered", p:600, days:5}]},
-    { id:"auth", label:"Authentication", type:"radio", opts:[
-      {v:"key", t:"API key or token", d:"Straightforward", p:0, days:0},
-      {v:"oauth", t:"OAuth2 / OIDC", d:"Refresh flows, expiry, scopes", p:150, days:1},
-      {v:"custom", t:"Custom or undocumented", d:"I reverse-engineer it from real responses", p:300, days:2}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"hooks", t:"Inbound webhooks", d:"Signature verification and idempotency", p:200, days:2},
-      {v:"docs", t:"Written documentation", d:"How to run it and what breaks it", p:150, days:1},
-      {v:"monitor", t:"Failure alerting", d:"You hear about it before your users do", p:250, days:1}]}
-  ]},
-  upgrade: { name:"Legacy Java & Spring upgrade", base:600, days:8, revs:2, groups:[
-    { id:"jump", label:"How far are you jumping?", type:"radio", opts:[
-      {v:"minor", t:"Minor version bump", d:"Same major line", p:0, days:0},
-      {v:"java", t:"Java 8 or 11 → 17 / 21", d:"Language and JVM migration", p:400, days:4},
-      {v:"boot", t:"Spring Boot 2 → 3", d:"Includes the javax → jakarta migration", p:750, days:7}]},
-    { id:"size", label:"Project size", type:"radio", opts:[
-      {v:"s", t:"Under 50 source files", d:"", p:0, days:0},
-      {v:"m", t:"50 to 200 files", d:"", p:300, days:3},
-      {v:"l", t:"Over 200 files", d:"", p:800, days:7}]},
-    { id:"tests", label:"Does it have tests today?", type:"radio", opts:[
-      {v:"yes", t:"Yes, and they pass", d:"They prove nothing changed", p:0, days:0},
-      {v:"some", t:"Some, partly broken", d:"I repair what's needed to verify", p:200, days:2},
-      {v:"no", t:"None", d:"I add a thin safety net over critical paths first", p:400, days:4}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"ci", t:"CI pipeline set up", d:"Build, test and deploy on every push", p:400, days:2},
-      {v:"cve", t:"Vulnerable dependencies replaced", d:"Audit and remediation", p:300, days:2}]}
-  ]},
-  bug: { name:"Find and fix a stuck bug", base:300, days:3, revs:2, groups:[
-    { id:"kind", label:"How does it behave?", type:"radio", opts:[
-      {v:"repro", t:"Reproducible on demand", d:"Fails the same way every time", p:0, days:0},
-      {v:"inter", t:"Intermittent", d:"Once every N requests, no clear trigger", p:400, days:3},
-      {v:"prod", t:"Only in production", d:"Works fine on staging — the expensive kind", p:650, days:4}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"post", t:"Written post-mortem", d:"Root cause and how to prevent the class of bug", p:250, days:1},
-      {v:"audit", t:"Sweep for the same pattern elsewhere", d:"Usually there is more than one", p:350, days:2}]}
-  ]},
-  ai: { name:"AI feature in an existing product", base:800, days:9, revs:2, groups:[
-    { id:"kind", label:"What should it do?", type:"radio", opts:[
-      {v:"extract", t:"Extract or classify", d:"Structured data out of documents or text", p:0, days:0},
-      {v:"rag", t:"Answer questions over your data", d:"Retrieval with real relevance work", p:500, days:4},
-      {v:"agent", t:"Take actions in your systems", d:"Tool use, with guardrails", p:900, days:7}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"eval", t:"Eval harness", d:"Measured accuracy, so regressions are visible", p:350, days:2},
-      {v:"deploy", t:"Deploy and monitor", d:"Tracing plus cost-per-request reporting", p:400, days:2},
-      {v:"multi", t:"Provider-agnostic", d:"Swap models without a rewrite", p:300, days:2}]}
-  ]},
-  data: { name:"Scraper & scheduled pipeline", base:350, days:4, revs:2, groups:[
-    { id:"sources", label:"How many sources?", type:"radio", opts:[
-      {v:"1", t:"One site or API", d:"", p:0, days:0},
-      {v:"2-5", t:"Two to five", d:"", p:300, days:3},
-      {v:"6+", t:"Six or more", d:"", p:700, days:6}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"sched", t:"Scheduling and drift alerts", d:"You hear when the source layout changes", p:200, days:1},
-      {v:"dash", t:"Dashboard", d:"Browse and export the data", p:350, days:3}]}
-  ]},
-  cicd: { name:"CI/CD pipeline from zero", base:400, days:3, revs:2, groups:[
-    { id:"envs", label:"Environments", type:"radio", opts:[
-      {v:"1", t:"One", d:"Production only", p:0, days:0},
-      {v:"2-3", t:"Two or three", d:"Staging plus production", p:250, days:2},
-      {v:"4+", t:"Four or more", d:"", p:500, days:4}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"iac", t:"Infrastructure as code", d:"Terraform — environments become reproducible", p:450, days:3},
-      {v:"rb", t:"Automated rollback", d:"One command back to the last good build", p:250, days:1}]}
-  ]},
-  review: { name:"Architecture review", base:500, days:5, revs:1, groups:[
-    { id:"depth", label:"How deep?", type:"radio", opts:[
-      {v:"survey", t:"Survey", d:"Structure, risks and quick wins", p:0, days:0},
-      {v:"deep", t:"Deep review", d:"Data model, boundaries, scaling limits, cost", p:500, days:4}]},
-    { id:"extras", label:"Add-ons", type:"check", opts:[
-      {v:"exec", t:"Executive summary", d:"One page your board will actually read", p:200, days:1},
-      {v:"road", t:"Prioritized remediation plan", d:"Sequenced, with effort estimates", p:400, days:3}]}
-  ]}
-};
-
-var state = { svc:"api", picks:{}, rush:false };
-var $ = function(id){ return document.getElementById(id); };
-
-function initPicks(){
-  state.picks = {};
-  SERVICES[state.svc].groups.forEach(function(g){
-    state.picks[g.id] = g.type === "radio" ? g.opts[0].v : [];
-  });
-}
-
-function renderServices(){
-  $("svc").innerHTML = Object.keys(SERVICES).map(function(k){
-    var s = SERVICES[k];
-    var sel = k === state.svc;
-    return '<label class="opt' + (sel?' sel':'') + '" data-svc="' + k + '">' +
-      '<input type="radio" name="svc"' + (sel?' checked':'') + '>' +
-      '<span class="t"><b>' + s.name + '</b></span>' +
-      '<span class="p">$' + s.base + '+</span></label>';
-  }).join("");
-  Array.prototype.forEach.call($("svc").querySelectorAll("[data-svc]"), function(el){
-    el.addEventListener("click", function(){
-      state.svc = el.getAttribute("data-svc");
-      initPicks(); renderServices(); renderOptions(); calc();
-    });
-  });
-}
-
-function renderOptions(){
-  var s = SERVICES[state.svc];
-  $("opts").innerHTML = s.groups.map(function(g){
-    var rows = g.opts.map(function(o){
-      var sel = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
-      return '<label class="opt' + (sel?' sel':'') + '" data-g="' + g.id + '" data-v="' + o.v + '" data-t="' + g.type + '">' +
-        '<input type="' + (g.type==="radio"?"radio":"checkbox") + '"' + (g.type==="radio"?' name="'+g.id+'"':'') + (sel?' checked':'') + '>' +
-        '<span class="t"><b>' + o.t + '</b>' + (o.d ? '<small>' + o.d + '</small>' : '') + '</span>' +
-        '<span class="p">' + (o.p ? '+$' + o.p : 'included') + '</span></label>';
-    }).join("");
-    return '<div style="margin-bottom:18px"><span class="lbl" style="display:block;margin-bottom:8px">' + g.label + '</span><div class="opts">' + rows + '</div></div>';
-  }).join("");
-
-  Array.prototype.forEach.call($("opts").querySelectorAll("[data-g]"), function(el){
-    el.addEventListener("click", function(){
-      var g = el.getAttribute("data-g"), v = el.getAttribute("data-v"), t = el.getAttribute("data-t");
-      if (t === "radio") { state.picks[g] = v; }
-      else {
-        var arr = state.picks[g], i = arr.indexOf(v);
-        if (i > -1) { arr.splice(i,1); } else { arr.push(v); }
-      }
-      renderOptions(); calc();
-    });
-  });
-}
-
-function build(){
-  var s = SERVICES[state.svc];
-  var total = s.base, days = s.days, lines = [{ t: s.name, p: s.base }];
-  s.groups.forEach(function(g){
-    g.opts.forEach(function(o){
-      var on = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
-      if (on && o.p > 0) { total += o.p; days += o.days; lines.push({ t:o.t, p:o.p }); }
-      else if (on && o.p === 0 && g.type === "radio" && g.opts.length > 1) { /* baseline choice */ }
-    });
-  });
-  if (state.rush) { total = Math.round(total * 1.35 / 5) * 5; days = Math.max(2, Math.ceil(days * 0.55)); lines.push({ t:"Rush delivery", p:"+35%" }); }
-  return { total: total, days: days, revs: s.revs, lines: lines, name: s.name };
-}
-
-function calc(){
-  var q = build();
-  $("total").textContent = "$" + q.total.toLocaleString("en-US");
-  $("days").textContent = q.days + (q.days === 1 ? " day" : " days");
-  $("revs").textContent = q.revs;
-  $("lines").innerHTML = q.lines.map(function(l){
-    return '<div class="line"><span>' + l.t + '</span><span>' + (typeof l.p === "number" ? "$" + l.p.toLocaleString("en-US") : l.p) + '</span></div>';
-  }).join("");
-}
-
-function briefText(){
-  var q = build(), s = SERVICES[state.svc];
-  var out = "PROJECT BRIEF\n\nService: " + q.name + "\n\nScope selected:\n";
-  s.groups.forEach(function(g){
-    g.opts.forEach(function(o){
-      var on = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
-      if (on) { out += "  - " + g.label + ": " + o.t + "\n"; }
-    });
-  });
-  if (state.rush) { out += "  - Rush delivery requested\n"; }
-  out += "\nQuoted price: $" + q.total.toLocaleString("en-US") + " USD (fixed)\n";
-  out += "Estimated delivery: " + q.days + " days from start\n";
-  out += "Revisions included: " + q.revs + "\n";
-  out += "\n--- Please add ---\n";
-  out += "Your name / company:\nRepository or system:\nLanguage & framework:\nWhat outcome would make this a success:\nAnything already tried:\n";
-  return out;
-}
-
-$("rushOpt").addEventListener("click", function(){
-  state.rush = !state.rush;
-  $("rush").checked = state.rush;
-  $("rushOpt").classList.toggle("sel", state.rush);
-  calc();
-});
-
-function toast(msg){
-  var t = $("toast"); t.textContent = msg; t.classList.add("on");
-  setTimeout(function(){ t.classList.remove("on"); }, 2200);
-}
-
-$("copy").addEventListener("click", function(){
-  var txt = briefText();
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(txt).then(function(){ toast("Brief copied"); },
-      function(){ toast("Select and copy manually"); });
-  } else { toast("Copy not available here"); }
-});
-
-$("send").addEventListener("click", function(){
-  var q = build();
-  var subj = "Project: " + q.name + " — $" + q.total.toLocaleString("en-US");
-  window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(briefText());
-});
-
-// wire the footer email from the constant
-(function(){
-  var a = $("mailLink");
-  if (a) { a.href = "mailto:" + EMAIL; a.textContent = EMAIL; }
-})();
-
-initPicks(); renderServices(); renderOptions(); calc();
-</script>
+</body>
+</html>
