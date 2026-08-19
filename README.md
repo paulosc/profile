@@ -2,7 +2,7 @@
 
 Personal site — portfolio and instant project-quote configurator.
 
-**Live:** https://profile-69599.web.app
+**Live:** https://paulosergiocarvalho.com.br (Firebase origin: https://profile-69599.web.app)
 
 ## Languages
 
@@ -15,6 +15,18 @@ then `navigator.languages`, then the time zone as a location hint, then English.
 There is deliberately **no IP geolocation**. It needs a third-party request,
 hands every visitor's address to that provider, delays first paint and gets it
 wrong behind a VPN. The browser already states which languages the person reads.
+
+## Domain
+
+`paulosergiocarvalho.com.br`, registered at Registro.br and using its free DNS
+(`a.auto.dns.br` / `b.auto.dns.br`). Connected to Firebase Hosting through the
+console — there is no CLI command for custom domains.
+
+`DOMAIN` in `build.py` is the single place the address is written; it feeds the
+canonical tag, the Open Graph tags, `robots.txt` and `sitemap.xml`.
+
+`make_og.py` renders `public/og.png`, the card shown when the link is pasted into
+LinkedIn or WhatsApp. Rerun it only if the name, role or credential row changes.
 
 ## Build
 

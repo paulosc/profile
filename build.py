@@ -13,6 +13,7 @@ from content_quote import Q
 HERE = os.path.dirname(os.path.abspath(__file__))
 PUB = os.path.join(HERE, "public")
 LANGS = ["en", "pt", "es"]
+DOMAIN = "https://paulosergiocarvalho.com.br"
 
 
 def t(key, tag="span", cls=None, attrs=""):
@@ -34,7 +35,10 @@ FAVICON = ("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewB
            "fill=%22white%22 text-anchor=%22middle%22>P</text></svg>")
 
 
-def head(title_key, desc_key):
+def head(title_key, desc_key, path):
+    """Social and canonical tags carry English: crawlers and link unfurlers do not
+    run the language switcher, so whatever ships in the markup is what they read."""
+    url = DOMAIN + path
     return u"""<!doctype html>
 <html lang="en">
 <head>
@@ -42,11 +46,26 @@ def head(title_key, desc_key):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="%s">%s</title>
 <meta name="description" content="%s" data-i18n-meta="%s">
+<link rel="canonical" href="%s">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Paulo Carvalho">
+<meta property="og:url" content="%s">
+<meta property="og:title" content="%s">
+<meta property="og:description" content="%s">
+<meta property="og:image" content="%s/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="%s">
+<meta name="twitter:description" content="%s">
+<meta name="twitter:image" content="%s/og.png">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="%s">
 </head>
 <body>
-""" % (title_key, raw(title_key), raw(desc_key), desc_key, FAVICON)
+""" % (title_key, raw(title_key), raw(desc_key), desc_key,
+       url, url, raw(title_key), raw(desc_key), DOMAIN,
+       raw(title_key), raw(desc_key), DOMAIN, FAVICON)
 
 
 def nav(page):
@@ -231,7 +250,7 @@ def build_index():
 </section>
 """ % (t("hire.label", "span", "lbl"), t("hire.h2", "h2"), raw("hire.p"), raw("hire.cta"))
 
-    return (head("meta.home.title", "meta.home.desc") + nav("index") + hero + work
+    return (head("meta.home.title", "meta.home.desc", "/") + nav("index") + hero + work
             + timeline + education + about + band + footer() + script_tail(False))
 
 
@@ -352,7 +371,7 @@ def build_services():
 </section>
 """ % (t("proc.label", "span", "lbl"), t("proc.h2", "h2"), steps)
 
-    return (head("meta.svc.title", "meta.svc.desc") + nav("services") + hero + services
+    return (head("meta.svc.title", "meta.svc.desc", "/services") + nav("services") + hero + services
             + quote + process + footer()
             + '\n<div class="toast" id="toast">%s</div>\n' % raw("q.copied")
             + script_tail(True))
@@ -420,6 +439,17 @@ def main():
             s = re.sub(r'(href|src)="/%s(\?v=[a-f0-9]+)?"' % re.escape(f),
                        lambda m, f=f, v=v: '%s="/%s?v=%s"' % (m.group(1), f, v), s)
         io.open(p, "w", encoding="utf-8").write(s)
+
+    robots = "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % DOMAIN
+    io.open(os.path.join(PUB, "robots.txt"), "w", encoding="utf-8").write(robots)
+
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        '  <url><loc>%s/</loc><priority>1.0</priority></url>\n'
+        '  <url><loc>%s/services</loc><priority>0.8</priority></url>\n'
+        '</urlset>\n' % (DOMAIN, DOMAIN))
+    io.open(os.path.join(PUB, "sitemap.xml"), "w", encoding="utf-8").write(sitemap)
 
     missing = [k for k, v in S.items() for l in LANGS if not v.get(l)]
     print("strings: %d x %d languages" % (len(S), len(LANGS)))
