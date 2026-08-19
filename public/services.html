@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Services & Pricing — Paulo Carvalho</title>
-<meta name="description" content="Fixed-scope backend engineering: API integrations, legacy Java upgrades, stuck bugs, AI features. Instant quote.">
-<link rel="stylesheet" href="/style.css?v=2aeed2de">
+<title data-i18n="meta.svc.title">Services & Pricing — Paulo Carvalho</title>
+<meta name="description" content="Fixed-scope backend engineering: API integrations, legacy Java upgrades, stuck bugs, AI features. Instant quote." data-i18n-meta="meta.svc.desc">
+<link rel="stylesheet" href="/style.css?v=31d8763a">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%231B4FD8%22/><text x=%2216%22 y=%2223%22 font-family=%22monospace%22 font-size=%2219%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>P</text></svg>">
 </head>
 <body>
@@ -13,131 +13,133 @@
   <div class="wrap inner">
     <a class="brand" href="/">PAULO&nbsp;CARVALHO<span style="color:var(--accent)">.</span></a>
     <div class="links">
-      <a href="/#work">Work</a>
-      <a href="/#history">Experience</a>
-      <a href="/#about">About</a>
-      <a href="/services">Services</a>
-      <a class="cta" href="/services#quote">Get a quote</a>
+      <a href="/#work" data-i18n="nav.work">Work</a>
+      <a href="/#history" data-i18n="nav.experience">Experience</a>
+      <a href="/#about" data-i18n="nav.about">About</a>
+      <a href="/services" data-i18n="nav.services_short">Services</a>
+      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="pt">PT</button><button type="button" data-lang="es">ES</button></div>
+      <a class="cta" href="/services#quote" data-i18n="nav.quote">Get a quote</a>
     </div>
   </div>
 </nav>
 <header class="hero" id="top">
   <div class="wrap">
-    <span class="status"><span class="dot"></span>Taking work &middot; fixed price</span>
-    <h1>What I can<br><span class="accent">build for you.</span></h1>
-    <p class="lede">Fixed scope, fixed price, tested code. Price your project below in about a minute &mdash; no discovery call needed just to find out roughly what it costs.</p>
+    <span class="status"><span class="dot"></span><span data-i18n="svc.status">Taking work &middot; fixed price</span></span>
+    <h1 data-i18n-html="svc.h1">What I can<br><span class="accent">build for you.</span></h1>
+    <p class="lede" data-i18n-html="svc.lede">Fixed scope, fixed price, tested code. Price your project below in about a minute &mdash; no discovery call needed just to find out roughly what it costs.</p>
     <div class="hero-actions">
-      <a class="btn btn-solid" href="#quote">Price your project</a>
-      <a class="btn btn-ghost" href="/">See my background</a>
+      <a class="btn btn-solid" href="#quote" data-i18n="svc.cta1">Price your project</a>
+      <a class="btn btn-ghost" href="/" data-i18n="svc.cta2">See my background</a>
     </div>
   </div>
 </header>
 <section id="services">
   <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">What I sell</span></div>
-    <h2>Fixed scope. Fixed price.</h2>
-    <p class="lede" style="margin-top:14px;margin-bottom:32px">No hourly billing, no open-ended retainers. You buy a defined outcome, you know the number before I start, and you get tests that prove it works.</p>
+    <div class="sec-lbl"><span class="lbl" data-i18n="svc.label">What I sell</span></div>
+    <h2 data-i18n="svc.h2">Fixed scope. Fixed price.</h2>
+    <p class="lede" style="margin-top:14px;margin-bottom:32px" data-i18n-html="svc.intro">No hourly billing, no open-ended retainers. You buy a defined outcome, you know the number before I start, and you get tests that prove it works.</p>
 
     <div class="grid g3">
       <div class="card">
-        <span class="lbl">Integration</span>
-        <h3>Third-party API integration</h3>
-        <span class="price">from $450</span>
+        <span class="lbl" data-i18n="card.api.tag">Integration</span>
+        <h3 data-i18n="card.api.h">Third-party API integration</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $450</span>
         <ul>
-          <li>OAuth2, API keys, JWT — handled properly</li>
-          <li>Retry with backoff and rate-limit handling</li>
-          <li>Webhooks and idempotency</li>
-          <li>Tests that fail loudly when the provider changes</li>
+          <li data-i18n="card.api.b0">OAuth2, API keys, JWT &mdash; handled properly</li>
+          <li data-i18n="card.api.b1">Retry with backoff and rate-limit handling</li>
+          <li data-i18n="card.api.b2">Webhooks and idempotency</li>
+          <li data-i18n="card.api.b3">Tests that fail loudly when the provider changes</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">Modernization</span>
-        <h3>Legacy Java &amp; Spring upgrade</h3>
-        <span class="price">from $600</span>
+        <span class="lbl" data-i18n="card.upgrade.tag">Modernization</span>
+        <h3 data-i18n="card.upgrade.h">Legacy Java &amp; Spring upgrade</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $600</span>
         <ul>
-          <li>Java 8/11 → 17 or 21</li>
-          <li>Spring Boot 2 → 3, including javax → jakarta</li>
-          <li>Dependency conflicts and CVEs resolved</li>
-          <li>Green build and passing suite before handover</li>
+          <li data-i18n="card.upgrade.b0">Java 8/11 &rarr; 17 or 21</li>
+          <li data-i18n="card.upgrade.b1">Spring Boot 2 &rarr; 3, including javax &rarr; jakarta</li>
+          <li data-i18n="card.upgrade.b2">Dependency conflicts and CVEs resolved</li>
+          <li data-i18n="card.upgrade.b3">Green build and passing suite before handover</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">Rescue</span>
-        <h3>The bug nobody can find</h3>
-        <span class="price">from $300</span>
+        <span class="lbl" data-i18n="card.bug.tag">Rescue</span>
+        <h3 data-i18n="card.bug.h">The bug nobody can find</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $300</span>
         <ul>
-          <li>Race conditions, leaks, timeouts, lock contention</li>
-          <li>Reproduced first — that is the part people skip</li>
-          <li>Fixed with a test that fails without the fix</li>
-          <li>If I can't find it, I tell you instead of billing guesses</li>
+          <li data-i18n="card.bug.b0">Race conditions, leaks, timeouts, lock contention</li>
+          <li data-i18n="card.bug.b1">Reproduced first &mdash; that is the part people skip</li>
+          <li data-i18n="card.bug.b2">Fixed with a test that fails without the fix</li>
+          <li data-i18n="card.bug.b3">If I can&rsquo;t find it, I tell you instead of billing guesses</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">AI</span>
-        <h3>AI feature in an existing product</h3>
-        <span class="price">from $800</span>
+        <span class="lbl" data-i18n="card.ai.tag">AI</span>
+        <h3 data-i18n="card.ai.h">AI feature in an existing product</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $800</span>
         <ul>
-          <li>Retrieval, extraction, classification, tool use</li>
-          <li>Eval harness so you know when quality regresses</li>
-          <li>Cost per request measured, not guessed</li>
-          <li>Built on your data and your systems</li>
+          <li data-i18n="card.ai.b0">Retrieval, extraction, classification, tool use</li>
+          <li data-i18n="card.ai.b1">Eval harness so you know when quality regresses</li>
+          <li data-i18n="card.ai.b2">Cost per request measured, not guessed</li>
+          <li data-i18n="card.ai.b3">Built on your data and your systems</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">Data</span>
-        <h3>Scraper &amp; scheduled pipeline</h3>
-        <span class="price">from $350</span>
+        <span class="lbl" data-i18n="card.data.tag">Data</span>
+        <h3 data-i18n="card.data.h">Scraper &amp; scheduled pipeline</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $350</span>
         <ul>
-          <li>Extraction, normalization, relational storage</li>
-          <li>Scheduled re-checks with drift alerts</li>
-          <li>Optional dashboard</li>
+          <li data-i18n="card.data.b0">Extraction, normalization, relational storage</li>
+          <li data-i18n="card.data.b1">Scheduled re-checks with drift alerts</li>
+          <li data-i18n="card.data.b2">Optional dashboard</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">Infrastructure</span>
-        <h3>CI/CD from zero</h3>
-        <span class="price">from $400</span>
+        <span class="lbl" data-i18n="card.cicd.tag">Infrastructure</span>
+        <h3 data-i18n="card.cicd.h">CI/CD from zero</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $400</span>
         <ul>
-          <li>Build, test, deploy, rollback</li>
-          <li>GitHub Actions or GitLab CI</li>
-          <li>Environments and secrets done sanely</li>
+          <li data-i18n="card.cicd.b0">Build, test, deploy, rollback</li>
+          <li data-i18n="card.cicd.b1">GitHub Actions or GitLab CI</li>
+          <li data-i18n="card.cicd.b2">Environments and secrets done sanely</li>
         </ul>
       </div>
       <div class="card">
-        <span class="lbl">Advisory</span>
-        <h3>Architecture review</h3>
-        <span class="price">from $500</span>
+        <span class="lbl" data-i18n="card.review.tag">Advisory</span>
+        <h3 data-i18n="card.review.h">Architecture review</h3>
+        <span class="price"><span data-i18n="svc.from">from</span> $500</span>
         <ul>
-          <li>I read the repository, not a slide deck</li>
-          <li>Risks, bottlenecks, scaling limits and cost</li>
-          <li>Written so a non-technical board can follow it</li>
-          <li>Optional remediation plan, sequenced by effort</li>
+          <li data-i18n="card.review.b0">I read the repository, not a slide deck</li>
+          <li data-i18n="card.review.b1">Risks, bottlenecks, scaling limits and cost</li>
+          <li data-i18n="card.review.b2">Written so a non-technical board can follow it</li>
+          <li data-i18n="card.review.b3">Optional remediation plan, sequenced by effort</li>
         </ul>
       </div>
     </div>
   </div>
-</section><section id="quote">
+</section>
+<section id="quote">
   <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">Instant quote</span></div>
-    <h2>Price your project now.</h2>
-    <p class="lede" style="margin-top:14px;margin-bottom:32px">Pick what you need. The price and delivery date update as you go — no discovery call required to find out roughly what this costs.</p>
+    <div class="sec-lbl"><span class="lbl" data-i18n="q.label">Instant quote</span></div>
+    <h2 data-i18n="q.h2">Price your project now.</h2>
+    <p class="lede" style="margin-top:14px;margin-bottom:32px" data-i18n-html="q.intro">Pick what you need. The price and delivery date update as you go &mdash; no discovery call required to find out roughly what this costs.</p>
 
     <div class="cfg">
       <div class="cfg-main">
         <div class="step">
-          <div class="step-h"><span class="step-n">01</span><h3>What do you need?</h3></div>
+          <div class="step-h"><span class="step-n">01</span><h3 data-i18n="q.step1">What do you need?</h3></div>
           <div class="opts cols" id="svc"></div>
         </div>
         <div class="step" id="optStep">
-          <div class="step-h"><span class="step-n">02</span><h3>Scope</h3></div>
+          <div class="step-h"><span class="step-n">02</span><h3 data-i18n="q.step2">Scope</h3></div>
           <div id="opts"></div>
         </div>
         <div class="step">
-          <div class="step-h"><span class="step-n">03</span><h3>Timing</h3></div>
+          <div class="step-h"><span class="step-n">03</span><h3 data-i18n="q.step3">Timing</h3></div>
           <div class="opts">
             <label class="opt" id="rushOpt">
               <input type="checkbox" id="rush">
-              <span class="t"><b>Rush delivery</b><small>Cuts the timeline roughly in half. I reshuffle other work to do it.</small></span>
+              <span class="t"><b data-i18n="q.rush.t">Rush delivery</b><small data-i18n="q.rush.d">Cuts the timeline roughly in half. I reshuffle other work to do it.</small></span>
               <span class="p">+35%</span>
             </label>
           </div>
@@ -145,58 +147,60 @@
       </div>
 
       <aside class="quote">
-        <div class="quote-h"><span class="lbl" style="color:var(--accent)">Your quote</span></div>
+        <div class="quote-h"><span class="lbl" style="color:var(--accent)" data-i18n="q.yours">Your quote</span></div>
         <div class="quote-b">
           <div>
             <div class="total" id="total">$450</div>
-            <span class="fineprint">USD · fixed price · 50% to start</span>
+            <span class="fineprint" data-i18n="q.terms">USD &middot; fixed price &middot; 50% to start</span>
           </div>
           <div class="meta-grid">
-            <div><span class="lbl">Delivery</span><b id="days">4 days</b></div>
-            <div><span class="lbl">Revisions</span><b id="revs">2</b></div>
+            <div><span class="lbl" data-i18n="q.delivery">Delivery</span><b id="days">4 days</b></div>
+            <div><span class="lbl" data-i18n="q.revisions">Revisions</span><b id="revs">2</b></div>
           </div>
           <div class="lines" id="lines"></div>
-          <button class="btn btn-solid" id="send">Send this brief</button>
-          <button class="btn btn-ghost" id="copy">Copy brief</button>
-          <p class="fineprint">Quote holds for 14 days. Before either of us commits, we do a 20-minute call so I can confirm the scope is what you actually need — sometimes it isn't, and I'll say so.</p>
+          <button class="btn btn-solid" id="send" data-i18n="q.send">Send this brief</button>
+          <button class="btn btn-ghost" id="copy" data-i18n="q.copy">Copy brief</button>
+          <p class="fineprint" data-i18n-html="q.fine">Quote holds for 14 days. Before either of us commits, we do a 20-minute call so I can confirm the scope is what you actually need &mdash; sometimes it isn&rsquo;t, and I&rsquo;ll say so.</p>
         </div>
       </aside>
     </div>
   </div>
-</section><section id="process">
+</section>
+<section id="process">
   <div class="wrap">
-    <div class="sec-lbl"><span class="lbl">How it works</span></div>
-    <h2>Four steps, no surprises.</h2>
+    <div class="sec-lbl"><span class="lbl" data-i18n="proc.label">How it works</span></div>
+    <h2 data-i18n="proc.h2">Four steps, no surprises.</h2>
     <div class="steps" style="margin-top:28px;max-width:78ch">
-      <div class="pstep"><span class="n">01</span><div class="c"><h3>You send the brief</h3><p style="color:var(--ink-2)">Use the quote tool above, or just write me. I need the problem, not a specification — writing the specification is part of what you're paying for.</p></div></div>
-      <div class="pstep"><span class="n">02</span><div class="c"><h3>Twenty-minute call</h3><p style="color:var(--ink-2)">I confirm the scope and either lock the price or tell you it's wrong. Roughly one in four projects turns out to be smaller than the client assumed, and I'd rather say that up front than discover it in week two.</p></div></div>
-      <div class="pstep"><span class="n">03</span><div class="c"><h3>50% to start</h3><p style="color:var(--ink-2)">Work begins. You get repository access from day one and can watch the commits — no black box, no weekly status theatre.</p></div></div>
-      <div class="pstep"><span class="n">04</span><div class="c"><h3>Delivery, then the balance</h3><p style="color:var(--ink-2)">Code, tests, and a short written handover explaining what I did and what to watch. Revisions included as quoted. You pay the rest when it's working.</p></div></div>
+      <div class="pstep"><span class="n">01</span><div class="c"><h3 data-i18n="proc.1.h">You send the brief</h3><p style="color:var(--ink-2)" data-i18n="proc.1.p">Use the quote tool above, or just write me. I need the problem, not a specification &mdash; writing the specification is part of what you&rsquo;re paying for.</p></div></div>
+      <div class="pstep"><span class="n">02</span><div class="c"><h3 data-i18n="proc.2.h">Twenty-minute call</h3><p style="color:var(--ink-2)" data-i18n="proc.2.p">I confirm the scope and either lock the price or tell you it&rsquo;s wrong. Roughly one in four projects turns out to be smaller than the client assumed, and I&rsquo;d rather say that up front than discover it in week two.</p></div></div>
+      <div class="pstep"><span class="n">03</span><div class="c"><h3 data-i18n="proc.3.h">50% to start</h3><p style="color:var(--ink-2)" data-i18n="proc.3.p">Work begins. You get repository access from day one and can watch the commits &mdash; no black box, no weekly status theatre.</p></div></div>
+      <div class="pstep"><span class="n">04</span><div class="c"><h3 data-i18n="proc.4.h">Delivery, then the balance</h3><p style="color:var(--ink-2)" data-i18n="proc.4.p">Code, tests, and a short written handover explaining what I did and what to watch. Revisions included as quoted. You pay the rest when it&rsquo;s working.</p></div></div>
     </div>
   </div>
 </section>
-
-<!-- CONTACT --><footer>
+<footer>
   <div class="wrap">
     <div class="foot-grid">
       <div style="max-width:46ch;display:flex;flex-direction:column;gap:14px">
-        <h2>Let's scope it.</h2>
-        <p style="color:var(--ink-2)">Tell me what's broken or what needs building. If it isn't something I should take on, I'll say so and point you somewhere better.</p>
-        <span class="status" style="align-self:flex-start"><span class="dot"></span>Replies within one business day</span>
+        <h2 data-i18n="foot.h2">Let&rsquo;s scope it.</h2>
+        <p style="color:var(--ink-2)" data-i18n-html="foot.p">Tell me what&rsquo;s broken or what needs building. If it isn&rsquo;t something I should take on, I&rsquo;ll say so and point you somewhere better.</p>
+        <span class="status" style="align-self:flex-start"><span class="dot"></span><span data-i18n="foot.reply">Replies within one business day</span></span>
       </div>
       <div class="contact-list">
-        <span class="lbl" style="margin-bottom:4px">Contact</span>
+        <span class="lbl" style="margin-bottom:4px" data-i18n="foot.contact">Contact</span>
         <a href="mailto:pcarvalhosergio@gmail.com" id="mailLink">pcarvalhosergio@gmail.com</a>
         <a href="https://wa.me/5535991040850">WhatsApp +55 35 99104-0850</a>
-        <a href="https://www.linkedin.com/in/REPLACE-LINKEDIN">LinkedIn</a>
-        <a href="https://github.com/REPLACE-GITHUB">GitHub</a>
-        <span class="muted" style="font-size:.9rem;margin-top:6px">Brazil · UTC−3 · full overlap with US Eastern hours<br>Advanced English, daily work with international teams</span>
+        <a href="https://github.com/paulosc">GitHub</a>
+        <span class="muted" style="font-size:.9rem;margin-top:6px" data-i18n-html="foot.where">Brazil &middot; UTC&minus;3 &middot; full overlap with US Eastern hours<br>Advanced English, daily work with international teams</span>
       </div>
     </div>
-    <p class="foot-note">Paulo Sérgio Carvalho · Java backend &amp; integration engineering · Working in English and Portuguese</p>
+    <p class="foot-note" data-i18n-html="foot.note">Paulo S&eacute;rgio Carvalho &middot; Java backend &amp; integration engineering &middot; Working in English and Portuguese</p>
   </div>
 </footer>
+
 <div class="toast" id="toast">Brief copied</div>
-<script src="/quote.js?v=d5d9aae8"></script>
+
+<script src="/i18n.js?v=2487cbb7"></script>
+<script src="/quote.js?v=ec3ba798"></script>
 </body>
 </html>

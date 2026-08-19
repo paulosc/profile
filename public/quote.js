@@ -1,3 +1,17 @@
+// Configurator strings are translated by path, e.g. "api.auth.oauth.t".
+// English stays in this file as both the source and the fallback, so a missing
+// translation degrades to English instead of blanking the option out.
+function L(){ return window.__lang || "en"; }
+function tr(path, fallback){
+  var m = (window.SVC_I18N || {})[L()];
+  return (m && m[path] != null) ? m[path] : fallback;
+}
+function ui(key, fallback){
+  var d = (window.I18N || {})[L()];
+  return (d && d[key] != null) ? d[key] : fallback;
+}
+function P(g, o){ return state.svc + "." + g.id + "." + o.v; }
+
 /* ---- EDIT THIS ---- */
 var EMAIL = "pcarvalhosergio@gmail.com";
 /* ------------------- */
@@ -97,7 +111,7 @@ function renderServices(){
     var sel = k === state.svc;
     return '<label class="opt' + (sel?' sel':'') + '" data-svc="' + k + '">' +
       '<input type="radio" name="svc"' + (sel?' checked':'') + '>' +
-      '<span class="t"><b>' + s.name + '</b></span>' +
+      '<span class="t"><b>' + tr(k + '.name', s.name) + '</b></span>' +
       '<span class="p">$' + s.base + '+</span></label>';
   }).join("");
 }
@@ -109,10 +123,10 @@ function renderOptions(){
       var sel = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
       return '<label class="opt' + (sel?' sel':'') + '" data-g="' + g.id + '" data-v="' + o.v + '" data-t="' + g.type + '">' +
         '<input type="' + (g.type==="radio"?"radio":"checkbox") + '"' + (g.type==="radio"?' name="'+g.id+'"':'') + (sel?' checked':'') + '>' +
-        '<span class="t"><b>' + o.t + '</b>' + (o.d ? '<small>' + o.d + '</small>' : '') + '</span>' +
-        '<span class="p">' + (o.p ? '+$' + o.p : 'included') + '</span></label>';
+        '<span class="t"><b>' + tr(P(g,o) + '.t', o.t) + '</b>' + (o.d ? '<small>' + tr(P(g,o) + '.d', o.d) + '</small>' : '') + '</span>' +
+        '<span class="p">' + (o.p ? '+$' + o.p : ui('q.included','included')) + '</span></label>';
     }).join("");
-    return '<div style="margin-bottom:18px"><span class="lbl" style="display:block;margin-bottom:8px">' + g.label + '</span><div class="opts">' + rows + '</div></div>';
+    return '<div style="margin-bottom:18px"><span class="lbl" style="display:block;margin-bottom:8px">' + tr(state.svc + '.' + g.id + '.label', g.label) + '</span><div class="opts">' + rows + '</div></div>';
   }).join("");
 
 }
@@ -172,22 +186,22 @@ function onRush(){
 
 function build(){
   var s = SERVICES[state.svc];
-  var total = s.base, days = s.days, lines = [{ t: s.name, p: s.base }];
+  var total = s.base, days = s.days, lines = [{ t: tr(state.svc + '.name', s.name), p: s.base }];
   s.groups.forEach(function(g){
     g.opts.forEach(function(o){
       var on = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
-      if (on && o.p > 0) { total += o.p; days += o.days; lines.push({ t:o.t, p:o.p }); }
+      if (on && o.p > 0) { total += o.p; days += o.days; lines.push({ t: tr(P(g,o) + '.t', o.t), p:o.p }); }
       else if (on && o.p === 0 && g.type === "radio" && g.opts.length > 1) { /* baseline choice */ }
     });
   });
-  if (state.rush) { total = Math.round(total * 1.35 / 5) * 5; days = Math.max(2, Math.ceil(days * 0.55)); lines.push({ t:"Rush delivery", p:"+35%" }); }
-  return { total: total, days: days, revs: s.revs, lines: lines, name: s.name };
+  if (state.rush) { total = Math.round(total * 1.35 / 5) * 5; days = Math.max(2, Math.ceil(days * 0.55)); lines.push({ t: ui("q.rush.t","Rush delivery"), p:"+35%" }); }
+  return { total: total, days: days, revs: s.revs, lines: lines, name: tr(state.svc + '.name', s.name) };
 }
 
 function calc(){
   var q = build();
   $("total").textContent = "$" + q.total.toLocaleString("en-US");
-  $("days").textContent = q.days + (q.days === 1 ? " day" : " days");
+  $("days").textContent = q.days + " " + (q.days === 1 ? ui("q.day","day") : ui("q.days","days"));
   $("revs").textContent = q.revs;
   $("lines").innerHTML = q.lines.map(function(l){
     return '<div class="line"><span>' + l.t + '</span><span>' + (typeof l.p === "number" ? "$" + l.p.toLocaleString("en-US") : l.p) + '</span></div>';
@@ -196,19 +210,19 @@ function calc(){
 
 function briefText(){
   var q = build(), s = SERVICES[state.svc];
-  var out = "PROJECT BRIEF\n\nService: " + q.name + "\n\nScope selected:\n";
+  var out = tr("brief.title","PROJECT BRIEF") + "\n\n" + tr("brief.service","Service") + ": " + q.name + "\n\n" + tr("brief.scope","Scope selected") + ":\n";
   s.groups.forEach(function(g){
     g.opts.forEach(function(o){
       var on = g.type === "radio" ? state.picks[g.id] === o.v : state.picks[g.id].indexOf(o.v) > -1;
-      if (on) { out += "  - " + g.label + ": " + o.t + "\n"; }
+      if (on) { out += "  - " + tr(state.svc + "." + g.id + ".label", g.label) + ": " + tr(P(g,o) + ".t", o.t) + "\n"; }
     });
   });
-  if (state.rush) { out += "  - Rush delivery requested\n"; }
-  out += "\nQuoted price: $" + q.total.toLocaleString("en-US") + " USD (fixed)\n";
-  out += "Estimated delivery: " + q.days + " days from start\n";
-  out += "Revisions included: " + q.revs + "\n";
-  out += "\n--- Please add ---\n";
-  out += "Your name / company:\nRepository or system:\nLanguage & framework:\nWhat outcome would make this a success:\nAnything already tried:\n";
+  if (state.rush) { out += "  - " + tr("brief.rush","Rush delivery requested") + "\n"; }
+  out += "\n" + tr("brief.price","Quoted price") + ": $" + q.total.toLocaleString("en-US") + " " + tr("brief.fixed","USD (fixed)") + "\n";
+  out += tr("brief.eta","Estimated delivery") + ": " + q.days + " " + tr("brief.days_from","days from start") + "\n";
+  out += tr("brief.revs","Revisions included") + ": " + q.revs + "\n";
+  out += "\n" + tr("brief.please","--- Please add ---") + "\n";
+  out += tr("brief.fields","Your name / company:\nRepository or system:\nLanguage & framework:\nWhat outcome would make this a success:\nAnything already tried:") + "\n";
   return out;
 }
 
@@ -229,14 +243,14 @@ function toast(msg){
 $("copy").addEventListener("click", function(){
   var txt = briefText();
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(txt).then(function(){ toast("Brief copied"); },
+    navigator.clipboard.writeText(txt).then(function(){ toast(ui("q.copied","Brief copied")); },
       function(){ toast("Select and copy manually"); });
   } else { toast("Copy not available here"); }
 });
 
 $("send").addEventListener("click", function(){
   var q = build();
-  var subj = "Project: " + q.name + " — $" + q.total.toLocaleString("en-US");
+  var subj = tr("brief.subject","Project") + ": " + q.name + " — $" + q.total.toLocaleString("en-US");
   window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(briefText());
 });
 
@@ -247,3 +261,8 @@ $("send").addEventListener("click", function(){
 })();
 
 initPicks(); renderServices(); renderOptions(); calc();
+
+// Redraw in the new language, keeping whatever the visitor already selected.
+document.addEventListener("langchange", function(){
+  renderServices(); renderOptions(); calc();
+});
