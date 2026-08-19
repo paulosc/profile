@@ -1,32 +1,47 @@
 :root{
-  --bg:#EDEFF2; --surface:#FFFFFF; --surface-2:#F5F7F9; --field:#FAFBFC;
-  --ink:#0D1216; --ink-2:#36414B; --muted:#6A7681; --line:#D4DAE1; --line-2:#E4E9EE;
-  --accent:#1B4FD8; --accent-2:#123AA8; --accent-soft:#E3EAFB;
-  --pos:#15704E; --pos-soft:#DCF0E7; --warn:#96590F;
+  /* One committed dark identity rather than a pair of themes. The page is a
+     backend engineer's storefront; instrument panels are dark, and a single
+     look means the design can be tuned instead of merely made to survive both.
+     No prefers-color-scheme block on purpose — every colour is painted here. */
+
+  /* ground, stepping up in three levels so panels read as layers not outlines */
+  --bg:#070910;
+  --surface:#0E121C;
+  --surface-2:#141926;
+  --field:#0A0E17;
+
+  /* text: never pure white — it glares against a near-black ground */
+  --ink:#E6EBF4;
+  --ink-2:#A3AFC2;
+  --muted:#8B99AE;
+
+  --line:#1D2433;
+  --line-2:#141A26;
+
+  /* a luminous blue that survives on dark, with a soft wash for fills */
+  --accent:#4E8FFF;
+  --accent-2:#7FB0FF;
+  --accent-soft:#101B33;
+
+  /* semantic colours, kept clearly apart from the accent hue */
+  --pos:#3FD9A0;
+  --pos-soft:#0A2019;
+  --warn:#E3A951;
+  --neg:#E86B63;
+
   --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Liberation Mono",monospace;
   --r:4px;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0A0E12; --surface:#121820; --surface-2:#171F28; --field:#0E141B;
-    --ink:#E9EEF3; --ink-2:#B3BFCA; --muted:#7B8896; --line:#242E39; --line-2:#1C242D;
-    --accent:#6E9BFF; --accent-2:#8FB3FF; --accent-soft:#12203B;
-    --pos:#4FBE90; --pos-soft:#0F2620; --warn:#D19B4E;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0A0E12; --surface:#121820; --surface-2:#171F28; --field:#0E141B;
-  --ink:#E9EEF3; --ink-2:#B3BFCA; --muted:#7B8896; --line:#242E39; --line-2:#1C242D;
-  --accent:#6E9BFF; --accent-2:#8FB3FF; --accent-soft:#12203B;
-  --pos:#4FBE90; --pos-soft:#0F2620; --warn:#D19B4E;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
 body{
-  margin:0; background:var(--bg); color:var(--ink); font-family:var(--body);
+  margin:0; color:var(--ink); font-family:var(--body);
   font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  background:var(--bg);
+  background-image:radial-gradient(ellipse 120% 70% at 50% -10%, #101830 0%, transparent 60%);
+  background-attachment:fixed;
 }
 .wrap{max-width:1120px; margin:0 auto; padding:0 clamp(16px,4vw,40px)}
 h1,h2,h3{margin:0; font-weight:750; letter-spacing:-.025em; line-height:1.1; text-wrap:balance}
@@ -43,7 +58,7 @@ a{color:var(--accent)}
 
 /* NAV */
 nav{
-  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
 }
 nav .inner{display:flex; align-items:center; justify-content:space-between; gap:20px; height:60px}
@@ -91,9 +106,13 @@ section{padding:clamp(56px,9vw,104px) 0; border-bottom:1px solid var(--line-2)}
 
 /* GRID */
 .grid{display:grid; gap:16px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:24px; display:flex; flex-direction:column; gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); align-items:start}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); align-items:start}
+.card{
+  background:linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+  border:1px solid var(--line); border-radius:var(--r); padding:24px;
+  display:flex; flex-direction:column; gap:12px;
+}
 .card .price{font-family:var(--mono); font-weight:700; color:var(--accent); font-size:1.02rem; font-variant-numeric:tabular-nums}
 .card ul{margin:0; padding-left:1.1em; display:flex; flex-direction:column; gap:5px; font-size:.9rem; color:var(--ink-2)}
 .card li::marker{color:var(--accent)}
@@ -136,6 +155,7 @@ section{padding:clamp(56px,9vw,104px) 0; border-bottom:1px solid var(--line-2)}
 
 /* WORK */
 .work{border:1px solid var(--line); border-radius:var(--r); background:var(--surface); overflow:hidden}
+.work-h{background:var(--surface-2)}
 .work-h{padding:20px 24px; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:10px 16px; align-items:baseline; justify-content:space-between}
 .work-b{padding:20px 24px; display:flex; flex-direction:column; gap:14px}
 .tags{display:flex; flex-wrap:wrap; gap:6px}
@@ -223,7 +243,7 @@ body::before{
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px);
   background-size:64px 64px;
-  opacity:.30;
+  opacity:.55;
   mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 0%, transparent 75%);
   -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 0%, transparent 75%);
 }

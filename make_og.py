@@ -11,11 +11,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "public", "og.png")
 
 W, H = 1200, 630
-BG = (13, 18, 22)          # ink, the site's darkest surface
-ACCENT = (110, 155, 255)   # the dark-theme accent, legible on this ground
-INK = (233, 238, 243)
-MUTED = (123, 136, 150)
-LINE = (36, 46, 57)
+BG = (7, 9, 16)            # --bg, the site ground
+ACCENT = (78, 143, 255)    # --accent
+INK = (230, 235, 244)      # --ink
+MUTED = (139, 153, 174)    # --muted
+LINE = (29, 36, 51)        # --line
 
 FONTS = "C:/Windows/Fonts/"
 
