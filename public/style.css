@@ -183,3 +183,104 @@ footer{padding:clamp(48px,7vw,80px) 0 60px}
   text-decoration:none; color:var(--accent); border-bottom:1px solid transparent; padding-bottom:1px;
 }
 .visit:hover{border-bottom-color:var(--accent)}
+
+/* send-brief panel: shown after the button copies the brief */
+.sendpanel{
+  display:flex; flex-direction:column; gap:9px; padding:16px;
+  border:1px solid var(--accent); border-radius:var(--r); background:var(--accent-soft);
+}
+.sendpanel h3{font-size:.98rem}
+.sendpanel .btn{width:100%; text-align:center; padding:10px 16px; font-size:.9rem}
+.sendpanel b{font-family:var(--mono); font-size:.88em; overflow-wrap:anywhere}
+.linkish{
+  background:none; border:none; padding:0; align-self:flex-start; cursor:pointer;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--muted); text-decoration:underline;
+}
+.linkish:hover{color:var(--ink)}
+
+/* ============================================================
+   TECHNICAL TREATMENT
+   A blueprint grid, a live service-graph behind the hero, and
+   motion that only ever reinforces structure — never decorates.
+   ============================================================ */
+
+/* faint engineering grid, anchored to the page not the viewport */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.30;
+  mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 0%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%, #000 0%, transparent 75%);
+}
+
+/* hero canvas sits behind the copy, never over it */
+.hero{position:relative; overflow:hidden}
+#heroCanvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:-1; pointer-events:none; opacity:.85;
+  mask-image:linear-gradient(to right, transparent 0%, #000 45%, #000 100%);
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 45%, #000 100%);
+}
+.hero .wrap{position:relative; z-index:1}
+
+/* the status pill reads as telemetry: the dot actually pulses */
+.dot{position:relative}
+.dot::after{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  background:var(--pos); animation:ping 2.4s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes ping{ 0%{transform:scale(1);opacity:.7} 70%,100%{transform:scale(3);opacity:0} }
+
+/* accent glow on the primary action, stronger in the dark theme */
+.btn-solid{
+  box-shadow:0 1px 2px rgba(0,0,0,.10), 0 0 0 0 var(--accent);
+  transition:box-shadow .18s ease, transform .18s ease, background .12s ease;
+}
+.btn-solid:hover{ transform:translateY(-1px); box-shadow:0 6px 20px -6px var(--accent) }
+.cta{transition:box-shadow .18s ease, background .12s ease}
+.cta:hover{box-shadow:0 6px 18px -8px var(--accent)}
+
+/* work and info cards lift and take the accent edge on hover */
+.work, .card{transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease}
+.work:hover, .card:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px -18px var(--accent);
+}
+.work:hover .work-h{background:var(--accent-soft)}
+.work-h{transition:background .18s ease}
+
+/* tags read as chips of a spec sheet */
+.tag{transition:border-color .15s ease, color .15s ease}
+.work:hover .tag, .card:hover .tag{border-color:var(--accent); color:var(--accent)}
+
+/* section rules gain an accent tick at the left */
+.sec-lbl{position:relative; padding-left:14px}
+.sec-lbl::before{
+  content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+  width:4px; height:4px; background:var(--accent); border-radius:1px;
+}
+
+/* scroll reveal — structure appearing in order, not fading confetti */
+/* Scoped under a class that reveal.js sets on <html> before it observes
+   anything. If that script fails to load or throws, the rule never applies and
+   the content simply stays visible — CSS must never be the only thing standing
+   between a visitor and the page. */
+.js-reveal .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
+.js-reveal .reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal{opacity:1; transform:none; transition:none}
+  .dot::after{animation:none}
+  .btn-solid:hover, .work:hover, .card:hover{transform:none}
+}
+
+/* the quote total deserves to read like an instrument display */
+.total{
+  text-shadow:0 0 22px color-mix(in srgb, var(--accent) 22%, transparent);
+  transition:color .2s ease;
+}
+.quote{box-shadow:0 12px 40px -24px var(--accent)}

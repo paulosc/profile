@@ -116,6 +116,7 @@ def build_index():
     ])
 
     hero = u"""<header class="hero" id="top">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="status"><span class="dot"></span><span data-i18n="home.status">%s</span></span>
     <h1 data-i18n-html="home.h1">%s</h1>
@@ -154,7 +155,7 @@ def build_index():
       </article>
 """ % (t("work.%s.h" % slug, "h3"), t("work.%s.meta" % slug, "span", "lbl"), paras, link, tagspan)
 
-    work = u"""<section id="work">
+    work = u"""<section id="work" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -222,7 +223,7 @@ def build_index():
         </div>
 """ % (t("also.%s.h" % slug, "h3"), slug, raw("also.%s.p" % slug), url, raw("work.visit"))
 
-    also_sec = u"""<section id="also">
+    also_sec = u"""<section id="also" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -242,7 +243,7 @@ def build_index():
       </div>
 """ % (t("aisec.%s.h" % slug, "h3"), slug, raw("aisec.%s.p" % slug))
 
-    ai_sec = u"""<section id="ai">
+    ai_sec = u"""<section id="ai" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -262,7 +263,7 @@ def build_index():
     also = ["C", "C++", "FreeRTOS", "Embedded Linux", "JSF", "PrimeFaces", "Grails", "Groovy",
             "Flutter", "Firebase", "Gemini"]
 
-    about = u"""<section id="about">
+    about = u"""<section id="about" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;align-items:start">
@@ -295,7 +296,7 @@ def build_index():
        t("about.also", "span", "lbl"), "".join('<span class="tag">%s</span>' % x for x in also),
        t("about.langs", "span", "lbl"), raw("about.langs.p"))
 
-    band = u"""<section id="hire" style="background:var(--surface)">
+    band = u"""<section id="hire" class="reveal" style="background:var(--surface)">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between">
     <div style="max-width:52ch;display:flex;flex-direction:column;gap:12px">
       %s
@@ -314,6 +315,7 @@ def build_index():
 # -------------------------------------------------------------- services
 def build_services():
     hero = u"""<header class="hero" id="top">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="status"><span class="dot"></span><span data-i18n="svc.status">%s</span></span>
     <h1 data-i18n-html="svc.h1">%s</h1>
@@ -345,7 +347,7 @@ def build_services():
 """ % (t("card.%s.tag" % cid, "span", "lbl"), t("card.%s.h" % cid, "h3"),
        raw("svc.from"), prices[cid], bullets))
 
-    services = u"""<section id="services">
+    services = u"""<section id="services" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -357,7 +359,7 @@ def build_services():
 </section>
 """ % (t("svc.label", "span", "lbl"), t("svc.h2", "h2"), raw("svc.intro"), "".join(cards))
 
-    quote = u"""<section id="quote">
+    quote = u"""<section id="quote" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -397,8 +399,18 @@ def build_services():
             <div>%s<b id="revs">2</b></div>
           </div>
           <div class="lines" id="lines"></div>
-          <button class="btn btn-solid" id="send" data-i18n="q.send">%s</button>
-          <button class="btn btn-ghost" id="copy" data-i18n="q.copy">%s</button>
+          <button type="button" class="btn btn-solid" id="send" data-i18n="q.send">%s</button>
+          <button type="button" class="btn btn-ghost" id="copy" data-i18n="q.copy">%s</button>
+          <div class="sendpanel" id="sendPanel" hidden>
+            %s
+            <p class="fineprint" data-i18n-html="q.sent.p">%s</p>
+            <a class="btn btn-solid" id="toGmail" target="_blank" rel="noopener" data-i18n="q.sent.gmail">%s</a>
+            <a class="btn btn-ghost" id="toMail" data-i18n="q.sent.mail">%s</a>
+            <a class="btn btn-ghost" id="toWhats" target="_blank" rel="noopener" data-i18n="q.sent.whats">%s</a>
+            <p class="fineprint"><span data-i18n="q.sent.manual">%s</span>
+              <b>pcarvalhosergio@gmail.com</b></p>
+            <button type="button" class="linkish" id="closePanel" data-i18n="q.sent.close">%s</button>
+          </div>
           <p class="fineprint" data-i18n-html="q.fine">%s</p>
         </div>
       </aside>
@@ -411,14 +423,17 @@ def build_services():
        t("q.yours", "span", "lbl", 'style="color:var(--accent)"'),
        t("q.terms", "span", "fineprint"),
        t("q.delivery", "span", "lbl"), t("q.revisions", "span", "lbl"),
-       raw("q.send"), raw("q.copy"), raw("q.fine"))
+       raw("q.send"), raw("q.copy"),
+       t("q.sent.h", "h3"), raw("q.sent.p"), raw("q.sent.gmail"), raw("q.sent.mail"),
+       raw("q.sent.whats"), raw("q.sent.manual"), raw("q.sent.close"),
+       raw("q.fine"))
 
     steps = ""
     for i in (1, 2, 3, 4):
         steps += u"""      <div class="pstep"><span class="n">0%d</span><div class="c">%s%s</div></div>
 """ % (i, t("proc.%d.h" % i, "h3"), t("proc.%d.p" % i, "p", None, 'style="color:var(--ink-2)"'))
 
-    process = u"""<section id="process">
+    process = u"""<section id="process" class="reveal">
   <div class="wrap">
     <div class="sec-lbl">%s</div>
     %s
@@ -461,6 +476,8 @@ def footer():
 
 def script_tail(with_quote):
     s = '\n<script src="/i18n.js"></script>\n'
+    s += '<script src="/hero.js"></script>\n'
+    s += '<script src="/reveal.js"></script>\n'
     if with_quote:
         s += '<script src="/quote.js"></script>\n'
     return s + "</body>\n</html>\n"
@@ -488,7 +505,7 @@ def main():
     # cache-bust every asset by content hash
     def h(f):
         return hashlib.sha1(io.open(os.path.join(PUB, f), "rb").read()).hexdigest()[:8]
-    hashes = {f: h(f) for f in ["style.css", "quote.js", "i18n.js"]}
+    hashes = {f: h(f) for f in ["style.css", "quote.js", "i18n.js", "hero.js", "reveal.js"]}
     for page in ["index.html", "services.html"]:
         p = os.path.join(PUB, page)
         s = io.open(p, encoding="utf-8").read()

@@ -354,6 +354,16 @@ add("q.revisions", u"Revisions", u"Revisões", u"Revisiones")
 add("q.send", u"Send this brief", u"Enviar este briefing", u"Enviar este briefing")
 add("q.copy", u"Copy brief", u"Copiar briefing", u"Copiar briefing")
 add("q.copied", u"Brief copied", u"Briefing copiado", u"Briefing copiado")
+add("q.sent.h", u"Brief copied to your clipboard.", u"Briefing copiado para a sua \u00e1rea de transfer\u00eancia.", u"Briefing copiado a tu portapapeles.")
+add("q.sent.p", u"Pick how you would rather send it &mdash; the text is already copied either way.",
+    u"Escolha por onde prefere enviar &mdash; o texto j\u00e1 est\u00e1 copiado de qualquer forma.",
+    u"Elige por d\u00f3nde prefieres enviarlo &mdash; el texto ya est\u00e1 copiado igualmente.")
+add("q.sent.gmail", u"Open in Gmail", u"Abrir no Gmail", u"Abrir en Gmail")
+add("q.sent.mail", u"Open mail app", u"Abrir app de e-mail", u"Abrir app de correo")
+add("q.sent.whats", u"Send on WhatsApp", u"Enviar no WhatsApp", u"Enviar por WhatsApp")
+add("q.sent.manual", u"Or paste it into an email to", u"Ou cole em um e-mail para", u"O p\u00e9galo en un correo a")
+add("q.sent.close", u"Close", u"Fechar", u"Cerrar")
+
 add("q.fine", u"Quote holds for 14 days. Before either of us commits, we do a 20-minute call so I can confirm the scope is what you actually need &mdash; sometimes it isn&rsquo;t, and I&rsquo;ll say so.",
     u"O orçamento vale por 14 dias. Antes de qualquer compromisso, fazemos uma conversa de 20 minutos para eu confirmar se o escopo é o que você realmente precisa &mdash; às vezes não é, e eu vou dizer.",
     u"El presupuesto vale 14 días. Antes de comprometernos, hacemos una llamada de 20 minutos para confirmar que el alcance es lo que realmente necesitas &mdash; a veces no lo es, y te lo diré.")

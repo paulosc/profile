@@ -248,11 +248,29 @@ $("copy").addEventListener("click", function(){
   } else { toast("Copy not available here"); }
 });
 
+// A bare mailto: link silently does nothing for anyone without a desktop mail
+// client configured, which is most people. Copy the brief first, then offer
+// Gmail, the mail app and WhatsApp so at least one route always works.
 $("send").addEventListener("click", function(){
-  var q = build();
-  var subj = tr("brief.subject","Project") + ": " + q.name + " — $" + q.total.toLocaleString("en-US");
-  window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(briefText());
+  var b = build();
+  var subj = tr("brief.subject","Project") + ": " + b.name + " - $" + b.total.toLocaleString("en-US");
+  var body = briefText();
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(body).catch(function(){});
+  }
+
+  $("toGmail").href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) +
+                      "&su=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+  $("toMail").href  = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subj) +
+                      "&body=" + encodeURIComponent(body);
+  $("toWhats").href = "https://wa.me/5535991040850?text=" + encodeURIComponent(subj + "\n\n" + body);
+
+  $("sendPanel").hidden = false;
+  $("sendPanel").scrollIntoView({block: "nearest", behavior: "smooth"});
 });
+
+$("closePanel").addEventListener("click", function(){ $("sendPanel").hidden = true; });
 
 // wire the footer email from the constant
 (function(){

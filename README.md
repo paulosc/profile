@@ -63,6 +63,16 @@ Two pages, deliberately separated: the home page presents who I am, `/services` 
 - **Pricing** — the `SERVICES` object in `quote.js`. Each service has a `base`, a `days` estimate and option groups. Radio groups must keep their first option at `p: 0`, because that option defines the advertised "from $X" on the service card. Adding an option means adding its translation to `content_quote.py`.
 - **Portfolio** — the `work.*` keys in `content.py` and the `workcard(...)` calls in `build.py`.
 
+## Two traps worth knowing
+
+**Never let CSS hide what only JavaScript can reveal.** The scroll animation
+started as a plain `.reveal{opacity:0}` plus a script that added `.in`. The
+script tag failed to make it into the generated HTML and every section below the
+fold went invisible on the live site. The rule is now scoped under `.js-reveal`,
+a class `reveal.js` sets on `<html>` before it observes anything, and the script
+also force-reveals everything after three seconds. Two independent ways for the
+content to survive a broken script.
+
 ## A trap worth knowing
 
 Option rows are a `<label>` wrapping an `<input>`. The browser ticks the input as part of the label's *activation*, which happens after the click event is dispatched. Rebuilding the option list inside that click handler destroys the input before it is ticked, and the click is silently lost — the total simply never moves.
